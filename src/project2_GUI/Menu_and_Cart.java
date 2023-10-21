@@ -39,41 +39,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel25 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jPanel24 = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jPanel22 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel23 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jPanel21 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jPanel26 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jPanel27 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jPanel28 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel29 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel32 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jPanel33 = new javax.swing.JPanel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jPanel30 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        jPanel31 = new javax.swing.JPanel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -81,6 +46,27 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -132,8 +118,8 @@ public class Menu_and_Cart extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(266, Short.MAX_VALUE))
         );
@@ -159,361 +145,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jPanel3.add(jLabel13);
         jLabel13.setBounds(260, 290, 70, 20);
 
-        jPanel25.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/mixed pizza-.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
-        jPanel25.setLayout(jPanel25Layout);
-        jPanel25Layout.setHorizontalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel25Layout.setVerticalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel25);
-        jPanel25.setBounds(640, 40, 90, 90);
-
-        jPanel24.setBackground(new java.awt.Color(255, 245, 224));
-
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("$3.99");
-        jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("Pizza Slice");
-        jLabel23.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
-        jPanel24.setLayout(jPanel24Layout);
-        jPanel24Layout.setHorizontalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-            .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-        );
-        jPanel24Layout.setVerticalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel24Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel23)
-                .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
-                    .addContainerGap(45, Short.MAX_VALUE)
-                    .addComponent(jLabel24)
-                    .addGap(29, 29, 29)))
-        );
-
-        jPanel3.add(jPanel24);
-        jPanel24.setBounds(730, 40, 90, 90);
-
-        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Fries-.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel22);
-        jPanel22.setBounds(260, 180, 90, 90);
-
-        jPanel23.setBackground(new java.awt.Color(255, 245, 224));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("NZ Fries");
-        jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("$2.99");
-        jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                .addGap(0, 29, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel9)
-                .addGap(29, 29, 29))
-        );
-
-        jPanel3.add(jPanel23);
-        jPanel23.setBounds(350, 180, 90, 90);
-
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Hash bites-.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel15);
-        jPanel15.setBounds(450, 180, 90, 90);
-
-        jPanel21.setBackground(new java.awt.Color(255, 245, 224));
-
-        jLabel25.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("Hash Bites");
-        jLabel25.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("$2.99");
-        jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel25)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel26)
-                .addGap(29, 29, 29))
-        );
-
-        jPanel3.add(jPanel21);
-        jPanel21.setBounds(540, 180, 90, 90);
-
-        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Fried Onion-.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
-        jPanel26.setLayout(jPanel26Layout);
-        jPanel26Layout.setHorizontalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel26Layout.setVerticalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel26);
-        jPanel26.setBounds(640, 180, 90, 90);
-
-        jPanel27.setBackground(new java.awt.Color(255, 245, 224));
-
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText("Fried BO-rings");
-        jLabel27.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("$2.99");
-        jLabel28.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
-        jPanel27.setLayout(jPanel27Layout);
-        jPanel27Layout.setHorizontalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-            .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel27Layout.setVerticalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel27Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel27)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel28)
-                .addGap(29, 29, 29))
-        );
-
-        jPanel3.add(jPanel27);
-        jPanel27.setBounds(730, 180, 90, 90);
-
-        jPanel28.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/soda-.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
-        jPanel28.setLayout(jPanel28Layout);
-        jPanel28Layout.setHorizontalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel28Layout.setVerticalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel28);
-        jPanel28.setBounds(260, 320, 90, 90);
-
-        jPanel29.setBackground(new java.awt.Color(255, 245, 224));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Unlimited Soda");
-        jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("$1.99");
-        jLabel12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
-        jPanel29.setLayout(jPanel29Layout);
-        jPanel29Layout.setHorizontalGroup(
-            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel29Layout.setVerticalGroup(
-            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel29Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel11)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addGap(30, 30, 30))
-        );
-
-        jPanel3.add(jPanel29);
-        jPanel29.setBounds(350, 320, 90, 90);
-
-        jPanel32.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Bottled water-.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
-        jPanel32.setLayout(jPanel32Layout);
-        jPanel32Layout.setHorizontalGroup(
-            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel32Layout.setVerticalGroup(
-            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel32);
-        jPanel32.setBounds(450, 320, 90, 90);
-
-        jPanel33.setBackground(new java.awt.Color(255, 245, 224));
-
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setText("Bottled Water");
-        jLabel30.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setText("$1.59");
-        jLabel31.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
-        jPanel33.setLayout(jPanel33Layout);
-        jPanel33Layout.setHorizontalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel33Layout.setVerticalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel33Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel31)
-                .addGap(29, 29, 29))
-        );
-
-        jPanel3.add(jPanel33);
-        jPanel33.setBounds(540, 320, 90, 90);
-
-        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/fruit juices-.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
-        jPanel30.setLayout(jPanel30Layout);
-        jPanel30Layout.setHorizontalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel30Layout.setVerticalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel30);
-        jPanel30.setBounds(640, 320, 90, 90);
-
-        jPanel31.setBackground(new java.awt.Color(255, 245, 224));
-
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("Fruit Juices");
-        jLabel32.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("$2.50");
-        jLabel33.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
-        jPanel31.setLayout(jPanel31Layout);
-        jPanel31Layout.setHorizontalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel31Layout.setVerticalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel31Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel32)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel33)
-                .addGap(29, 29, 29))
-        );
-
-        jPanel3.add(jPanel31);
-        jPanel31.setBounds(730, 320, 90, 90);
-
         jButton1.setBackground(new java.awt.Color(199, 0, 57));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(242, 242, 242));
@@ -526,26 +157,28 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jPanel3.add(jButton1);
         jButton1.setBounds(50, 370, 160, 40);
 
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setLabelFor(jButton2);
         jLabel22.setText("$3.49");
         jLabel22.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel3.add(jLabel22);
-        jLabel22.setBounds(350, 90, 90, 16);
+        jLabel22.setBounds(340, 95, 100, 20);
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 105, 105));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setLabelFor(jButton2);
-        jLabel21.setText("Loaded Nachos");
-        jLabel21.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel21.setText("<html><CENTER>Loaded<br />Nachos</CENTER></html>");
         jPanel3.add(jLabel21);
-        jLabel21.setBounds(350, 70, 90, 15);
+        jLabel21.setBounds(350, 60, 80, 30);
 
         jButton2.setBackground(new java.awt.Color(255, 245, 224));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Loaded Nachos-.png"))); // NOI18N
         jButton2.setAlignmentY(0.0F);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton2.setIconTextGap(10);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -554,23 +187,191 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jPanel3.add(jButton2);
         jButton2.setBounds(260, 40, 180, 89);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 105, 105));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Beast Burger");
+        jLabel3.setLabelFor(jButton3);
+        jLabel3.setText("<html><CENTER>Beast<br/>Burger</CENTER></html>");
+        jLabel3.setAlignmentY(0.0F);
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(540, 70, 90, 15);
+        jLabel3.setBounds(540, 60, 80, 30);
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("$7.99");
         jPanel3.add(jLabel6);
-        jLabel6.setBounds(540, 90, 90, 16);
+        jLabel6.setBounds(540, 90, 80, 30);
 
         jButton3.setBackground(new java.awt.Color(255, 245, 224));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/burger-.png"))); // NOI18N
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton3.setIconTextGap(10);
         jPanel3.add(jButton3);
         jButton3.setBounds(450, 40, 180, 90);
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("$3.99");
+        jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel3.add(jLabel24);
+        jLabel24.setBounds(730, 90, 90, 15);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 105, 105));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Pizza Slice");
+        jLabel23.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel3.add(jLabel23);
+        jLabel23.setBounds(740, 70, 70, 16);
+
+        jButton4.setBackground(new java.awt.Color(255, 245, 224));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/mixed pizza-.png"))); // NOI18N
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton4.setIconTextGap(10);
+        jPanel3.add(jButton4);
+        jButton4.setBounds(640, 40, 180, 90);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 105, 105));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("NZ Fries");
+        jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel3.add(jLabel8);
+        jLabel8.setBounds(350, 210, 80, 16);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("$2.99");
+        jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel3.add(jLabel9);
+        jLabel9.setBounds(340, 230, 100, 15);
+
+        jButton5.setBackground(new java.awt.Color(255, 245, 224));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Fries-.jpg"))); // NOI18N
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton5.setIconTextGap(10);
+        jPanel3.add(jButton5);
+        jButton5.setBounds(260, 180, 180, 90);
+
+        jLabel25.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 105, 105));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("Hash Bites");
+        jLabel25.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel3.add(jLabel25);
+        jLabel25.setBounds(550, 210, 70, 16);
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("$2.99");
+        jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel3.add(jLabel26);
+        jLabel26.setBounds(530, 230, 100, 15);
+
+        jButton6.setBackground(new java.awt.Color(255, 245, 224));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Hash bites-.png"))); // NOI18N
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton6.setIconTextGap(10);
+        jPanel3.add(jButton6);
+        jButton6.setBounds(450, 180, 180, 90);
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 105, 105));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText("<HTML><CENTER>Fried<BR />BO-rings</CENTER></HTML>");
+        jLabel27.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel3.add(jLabel27);
+        jLabel27.setBounds(730, 200, 80, 32);
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("$2.99");
+        jLabel28.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel3.add(jLabel28);
+        jLabel28.setBounds(720, 235, 100, 20);
+
+        jButton7.setBackground(new java.awt.Color(255, 245, 224));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Fried Onion-.png"))); // NOI18N
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton7.setIconTextGap(10);
+        jPanel3.add(jButton7);
+        jButton7.setBounds(640, 180, 180, 90);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 105, 105));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("<HTML><CENTER>Unlimited<BR />Soda</CENTER></HTML>");
+        jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel3.add(jLabel11);
+        jLabel11.setBounds(350, 340, 80, 30);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("$1.99");
+        jLabel12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel3.add(jLabel12);
+        jLabel12.setBounds(350, 375, 80, 20);
+
+        jButton8.setBackground(new java.awt.Color(255, 245, 224));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/soda-.jpg"))); // NOI18N
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton8.setIconTextGap(10);
+        jPanel3.add(jButton8);
+        jButton8.setBounds(260, 320, 180, 90);
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 105, 105));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText("<HTML><CENTER>Bottled<BR /> Water</CENTER></HTML> ");
+        jLabel30.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel3.add(jLabel30);
+        jLabel30.setBounds(540, 340, 80, 30);
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("$1.59");
+        jLabel31.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel3.add(jLabel31);
+        jLabel31.setBounds(540, 375, 80, 20);
+
+        jButton9.setBackground(new java.awt.Color(255, 245, 224));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Bottled water-.png"))); // NOI18N
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton9.setIconTextGap(10);
+        jPanel3.add(jButton9);
+        jButton9.setBounds(450, 320, 180, 90);
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 105, 105));
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("Fruit Juices");
+        jLabel32.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel3.add(jLabel32);
+        jLabel32.setBounds(740, 350, 70, 16);
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("$2.50");
+        jLabel33.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel3.add(jLabel33);
+        jLabel33.setBounds(730, 370, 80, 15);
+
+        jButton10.setBackground(new java.awt.Color(255, 245, 224));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/fruit juices-.png"))); // NOI18N
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton10.setIconTextGap(10);
+        jButton10.setName(""); // NOI18N
+        jPanel3.add(jButton10);
+        jButton10.setBounds(640, 320, 180, 90);
 
         jMenu1.setText("HOME");
         jMenuBar1.add(jMenu1);
@@ -647,20 +448,21 @@ public class Menu_and_Cart extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -677,29 +479,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel26;
-    private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
-    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel30;
-    private javax.swing.JPanel jPanel31;
-    private javax.swing.JPanel jPanel32;
-    private javax.swing.JPanel jPanel33;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

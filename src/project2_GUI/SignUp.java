@@ -210,22 +210,32 @@ public class SignUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-        String firstName = jTextField1.getText().trim();
-        String lastName = jTextField2.getText().trim();
-        String employeeID = jTextField3.getText().trim();
-        String password = jPasswordField1.getText().trim();
-        Connection database = DriverManager.getConnection("jdbc:derby://localhost:1527/Employee_Accounts", "proj2", "Edatabase603");
-        Statement script = database.createStatement();
-        script.execute("INSERT INTO EMPLOYEE_DETAILS VALUES('" + employeeID + "', '" + firstName + "', '" 
-                        + lastName + "', '" + password + "')");
-        JOptionPane.showMessageDialog(this, "Account Registered. Welcome, " + firstName + " " + lastName + ".");
-        
-        //redirecting to another Jframe (LogIn)
-        Login log = new Login();
-        log.setVisible(true);
-        
-        } catch (SQLException e) {
+        try 
+        {
+            String firstName = jTextField1.getText().trim();
+            String lastName = jTextField2.getText().trim();
+            String employeeID = jTextField3.getText().trim();
+            String password = jPasswordField1.getText().trim();
+            if(employeeID.length() > 4 || employeeID.length() < 4 || !employeeID.startsWith("E"))
+            {
+                JOptionPane.showMessageDialog(this, "Invalid Employee ID. "
+                                   + "Check if you've entered a 4-character "
+                                   + "employee ID with a 'E' in the beginning.");
+            }
+            else
+            {
+                Connection database = DriverManager.getConnection("jdbc:derby://localhost:1527/Employee_Accounts", "proj2", "Edatabase603");
+                Statement script = database.createStatement();
+                script.execute("INSERT INTO EMPLOYEE_DETAILS VALUES('" + employeeID + "', '" + firstName 
+                                   + "', '" + lastName + "', '" + password + "')");
+                JOptionPane.showMessageDialog(this, "Account Registered. Welcome, " + firstName + " " + lastName + ".");
+                    //redirecting to another Jframe (LogIn)
+                Login log = new Login();
+                log.setVisible(true);
+            }
+        } 
+        catch (SQLException e) 
+        {
             Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, e);
         }
         

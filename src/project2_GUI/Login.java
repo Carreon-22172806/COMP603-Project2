@@ -236,7 +236,7 @@ public class Login extends javax.swing.JFrame {
         try {
             Connection database = DriverManager.getConnection("jdbc:derby://localhost:1527/Employee_Accounts", "proj2", "Edatabase603");
             Statement script = database.createStatement();
-            //DO THIS script.execute("SELECT FROM EMPLOYEE_ACCOUNTS");
+            script.execute("SELECT FROM EMPLOYEE_ACCOUNTS WHERE ");
         } catch (SQLException e) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, e);
         }
