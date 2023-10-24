@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 /**
  *
@@ -234,9 +236,22 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
+            String employeeID = jTextField1.getText().trim();
+            String password = jPasswordField1.getText().trim();
+            //DO THIS!!!!
             Connection database = DriverManager.getConnection("jdbc:derby://localhost:1527/Employee_Accounts", "proj2", "Edatabase603");
             Statement script = database.createStatement();
-            script.execute("SELECT FROM EMPLOYEE_ACCOUNTS WHERE ");
+            ResultSet rs = script.executeQuery("SELECT EMPLOYEE_ID, PASSWORD FROM EMPLOYEE_DETAILS WHERE EMPLOYEE_ID = " + employeeID + " AND PASSWORD = " + password);
+            if(rs.next())
+            {
+                JOptionPane.showMessageDialog(this, "Successfully logged in.");
+                Menu_and_Cart mac = new Menu_and_Cart();
+                mac.setVisible(true);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Failed to log in. Please retry entering your correct details.");
+            }
         } catch (SQLException e) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, e);
         }

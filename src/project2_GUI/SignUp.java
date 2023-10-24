@@ -216,10 +216,10 @@ public class SignUp extends javax.swing.JFrame {
             String lastName = jTextField2.getText().trim();
             String employeeID = jTextField3.getText().trim();
             String password = jPasswordField1.getText().trim();
-            if(employeeID.length() > 4 || employeeID.length() < 4 || !employeeID.startsWith("E"))
+            if(employeeID.length() > 5 || employeeID.length() < 5 || !employeeID.startsWith("E"))
             {
                 JOptionPane.showMessageDialog(this, "Invalid Employee ID. "
-                                   + "Check if you've entered a 4-character "
+                                   + "Check if you've entered a 5-character "
                                    + "employee ID with a 'E' in the beginning.");
             }
             else
