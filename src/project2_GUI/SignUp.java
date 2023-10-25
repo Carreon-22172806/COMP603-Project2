@@ -203,8 +203,10 @@ public class SignUp extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("inc-READY-ble! Ordering System - SIGNUP");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -220,10 +222,6 @@ public class SignUp extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(this, "Please don't leave the text fields empty. Try again.");       
             }
-            else if(employeeID == "admin")
-            {
-               
-            }
             else if(employeeID.length() > 5 || employeeID.length() < 5 || !employeeID.startsWith("E"))
             {
                 JOptionPane.showMessageDialog(this, "Invalid Employee ID. "
@@ -235,10 +233,12 @@ public class SignUp extends javax.swing.JFrame {
                 Connection database = DriverManager.getConnection("jdbc:derby://localhost:1527/Employee_Accounts", "proj2", "Edatabase603");
                 Statement script = database.createStatement();
                 script.execute("INSERT INTO EMPLOYEE_DETAILS VALUES('" + employeeID + "', '" + firstName 
-                                   + "', '" + lastName + "', '" + password + "')");
+                                   + "', '" + lastName + "', '" + password + "', null, null, null, null)");
                 JOptionPane.showMessageDialog(this, "Account Registered. Welcome, " + firstName + " " + lastName + ".");
                     //redirecting to another Jframe (SigUp Verification)
-                new SignUpVerification().setVisible(true);
+                SignUpVerification verification = new SignUpVerification(employeeID);
+                verification.setVisible(true);
+                this.dispose();
             }
         } 
         catch (SQLException e) 
