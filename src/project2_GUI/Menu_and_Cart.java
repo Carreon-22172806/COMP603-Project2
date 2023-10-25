@@ -30,6 +30,8 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        voidCart = new javax.swing.JButton();
+        cancelOrder = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -79,6 +81,30 @@ public class Menu_and_Cart extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(199, 0, 57));
         jPanel1.setLayout(null);
+
+        voidCart.setBackground(new java.awt.Color(20, 30, 70));
+        voidCart.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        voidCart.setForeground(new java.awt.Color(255, 245, 224));
+        voidCart.setText("CANCEL");
+        voidCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voidCartActionPerformed(evt);
+            }
+        });
+        jPanel1.add(voidCart);
+        voidCart.setBounds(710, 10, 110, 30);
+
+        cancelOrder.setBackground(new java.awt.Color(20, 30, 70));
+        cancelOrder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cancelOrder.setForeground(new java.awt.Color(255, 245, 224));
+        cancelOrder.setText("VOID ITEM");
+        cancelOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelOrderActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cancelOrder);
+        cancelOrder.setBounds(10, 10, 110, 30);
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
@@ -407,6 +433,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void voidCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidCartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_voidCartActionPerformed
+
+    private void cancelOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelOrderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -447,6 +481,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelOrder;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -488,5 +523,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton voidCart;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,7 +7,7 @@ package project2_GUI;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -235,24 +235,27 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            String employeeID = jTextField1.getText().trim();
-            String password = jPasswordField1.getText().trim();
-            //DO THIS!!!!
+        try 
+        {
             Connection database = DriverManager.getConnection("jdbc:derby://localhost:1527/Employee_Accounts", "proj2", "Edatabase603");
-            Statement script = database.createStatement();
-            ResultSet rs = script.executeQuery("SELECT EMPLOYEE_ID, PASSWORD FROM EMPLOYEE_DETAILS WHERE EMPLOYEE_ID = " + employeeID + " AND PASSWORD = " + password);
-            if(rs.next())
+            PreparedStatement script = database.prepareStatement("SELECT * FROM EMPLOYEE_DETAILS "
+                                                            + "WHERE EMPLOYEE_ID = ? AND PASSWORD = ?");
+            script.setString(1, jTextField1.getText());
+            script.setString(2, String.valueOf(jPasswordField1.getPassword()));
+            ResultSet rs = script.executeQuery();
+            //if else statement doesnt work as else cannot work through rs.next() -- EXPERIMENT COMMENT
+            //instead used while loop
+            while(rs.next()) 
             {
                 JOptionPane.showMessageDialog(this, "Successfully logged in.");
                 Menu_and_Cart mac = new Menu_and_Cart();
                 mac.setVisible(true);
             }
-            else
-            {
-                JOptionPane.showMessageDialog(this, "Failed to log in. Please retry entering your correct details.");
+            JOptionPane.showMessageDialog(this, "Failed to log in due to an invalid username or password. Please try again.\n "
+                                                    + "NOTE: Username contains an 'E' in the beginning followed by 4-numbers.");
             }
-        } catch (SQLException e) {
+        catch (SQLException e) 
+        {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
