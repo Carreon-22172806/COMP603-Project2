@@ -5,23 +5,66 @@
 package project2_GUI;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author A2 Student
+ * CAMILLE JOYCE CARREON
+ * STUDENT ID 22172806
+ * PROGRAM DESIGN AND CONSTRUCTION 
+ * COMP603 -  SOFTWARE CONSTRUCTION
+ * PROJECT 2 ASSIGNMENT
+ * 
  */
 public class Menu_and_Cart extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
+    //declaring product prices using double variable; making it private objects
+    private double food_tax = 0.13d;
+    private double nachos_price = 3.48d;
+    private double burger_price = 7.99d;
+    private double pizza_price = 3.99d;
+    private double fries_price = 2.99d;
+    private double hashbites_price = 2.99d;
+    private double onionrings_price = 2.99d;
+    private double soda_price = 1.99d;
+    private double water_price = 1.59d;
+    private double juice_price = 2.50d;
+    
+    //declaring product string names and making it private objects
+    private String nachos = "Loaded Nachos";
+    private String burger = "Beast Burger";
+    private String pizza = "Pizza Slice";
+    private String fries = "NZ Fries";
+    private String hashbites = "Hash Bites";
+    
+    
     public Menu_and_Cart() 
     {
         initComponents();
-        
+
         
     }
+    
+    private void clear()
+    {
+        int warningPopUp = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel your order?");
+        if(warningPopUp == JOptionPane.YES_OPTION)
+        {
+            
+        }   
+        else if (warningPopUp == JOptionPane.NO_OPTION)
+        {
+            
+        }  
+    }
 
+    private void addValuetoButtonPressed()
+    {
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,14 +75,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        voidCart = new javax.swing.JButton();
-        cancelOrder = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel14 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -71,6 +114,8 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
+        cancelOrder_button = new javax.swing.JButton();
+        voidItem_button = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -83,30 +128,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(199, 0, 57));
         jPanel1.setLayout(null);
-
-        voidCart.setBackground(new java.awt.Color(20, 30, 70));
-        voidCart.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        voidCart.setForeground(new java.awt.Color(255, 245, 224));
-        voidCart.setText("CANCEL");
-        voidCart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voidCartActionPerformed(evt);
-            }
-        });
-        jPanel1.add(voidCart);
-        voidCart.setBounds(710, 10, 110, 30);
-
-        cancelOrder.setBackground(new java.awt.Color(20, 30, 70));
-        cancelOrder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cancelOrder.setForeground(new java.awt.Color(255, 245, 224));
-        cancelOrder.setText("VOID ITEM");
-        cancelOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelOrderActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cancelOrder);
-        cancelOrder.setBounds(10, 10, 110, 30);
 
         jLabel4.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
@@ -129,6 +150,10 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Click on an item to add to your order.");
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -136,24 +161,30 @@ public class Menu_and_Cart extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel3.add(jPanel2);
-        jPanel2.setBounds(10, 20, 240, 330);
+        jPanel2.setBounds(10, 20, 240, 290);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 105, 105));
@@ -176,14 +207,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(199, 0, 57));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(242, 242, 242));
-        jButton1.setText("CHECKOUT");
+        jButton1.setText("PRINT INVOICE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel3.add(jButton1);
-        jButton1.setBounds(50, 370, 160, 40);
+        jButton1.setBounds(10, 370, 230, 40);
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -401,6 +432,30 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jPanel3.add(jButton10);
         jButton10.setBounds(640, 320, 180, 90);
 
+        cancelOrder_button.setBackground(new java.awt.Color(199, 0, 57));
+        cancelOrder_button.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        cancelOrder_button.setForeground(new java.awt.Color(255, 245, 224));
+        cancelOrder_button.setText("CANCEL");
+        cancelOrder_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelOrder_buttonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cancelOrder_button);
+        cancelOrder_button.setBounds(130, 320, 110, 40);
+
+        voidItem_button.setBackground(new java.awt.Color(199, 0, 57));
+        voidItem_button.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        voidItem_button.setForeground(new java.awt.Color(255, 245, 224));
+        voidItem_button.setText("VOID ITEM");
+        voidItem_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voidItem_buttonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(voidItem_button);
+        voidItem_button.setBounds(10, 320, 110, 40);
+
         jMenu1.setText("HOME");
         jMenuBar1.add(jMenu1);
 
@@ -421,10 +476,11 @@ public class Menu_and_Cart extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -435,13 +491,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
             // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void voidCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidCartActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_voidCartActionPerformed
+    private void cancelOrder_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrder_buttonActionPerformed
+    clear();
 
-    private void cancelOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrderActionPerformed
+    }//GEN-LAST:event_cancelOrder_buttonActionPerformed
+
+    private void voidItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidItem_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cancelOrderActionPerformed
+    }//GEN-LAST:event_voidItem_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -483,7 +540,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelOrder;
+    private javax.swing.JButton cancelOrder_button;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -524,7 +581,9 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton voidCart;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton voidItem_button;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,7 +15,12 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author A2 Student
+ * CAMILLE JOYCE CARREON
+ * STUDENT ID 22172806
+ * PROGRAM DESIGN AND CONSTRUCTION 
+ * COMP603 -  SOFTWARE CONSTRUCTION
+ * PROJECT 2 ASSIGNMENT
+ * 
  */
 public class SignUp extends javax.swing.JFrame {
 
@@ -209,6 +214,7 @@ public class SignUp extends javax.swing.JFrame {
         getAccessibleContext().setAccessibleName("inc-READY-ble! Ordering System - SIGNUP");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ProceedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProceedButtonActionPerformed

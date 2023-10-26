@@ -17,8 +17,13 @@ import java.sql.ResultSet;
 import javax.swing.JLabel;
 
 /**
- *
- * @author A2 Student
+ * 
+ * CAMILLE JOYCE CARREON
+ * STUDENT ID 22172806
+ * PROGRAM DESIGN AND CONSTRUCTION 
+ * COMP603 -  SOFTWARE CONSTRUCTION
+ * PROJECT 2 ASSIGNMENT
+ * 
  */
 public class Login extends javax.swing.JFrame {
 
@@ -279,6 +284,7 @@ public class Login extends javax.swing.JFrame {
         getAccessibleContext().setAccessibleName("inc-READY-ble! Ordering System - LOGIN\n");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
