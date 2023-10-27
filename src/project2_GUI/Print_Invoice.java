@@ -27,7 +27,7 @@ public class Print_Invoice extends javax.swing.JFrame {
     public Print_Invoice(String filename) {
         this.filename = filename;
         Menu_and_Cart readInvoice = new Menu_and_Cart();
-        readInvoice.receiptDetails();
+        //
         Invoice.setText(readInvoice.toString());
     }
     

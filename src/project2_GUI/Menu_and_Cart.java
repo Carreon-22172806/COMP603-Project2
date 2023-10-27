@@ -5,6 +5,8 @@
 package project2_GUI;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -30,25 +32,55 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     
     //for calculations
     private double food_tax = .13d;
+    private int [] quantity = new int [] {0,0,0,0,0,0,0,0,0};   //invoice value when button clicked.
     
-
-    
-    int quantity;   //invoice value when button clicked.
     public String toString()
     {
-        return String.valueOf(quantity);
+        return "          inc-READY-ble!          \n"
+                + "= = = = inc-READY-ble! AUT = = = =\n"
+                + "\nSoftware Made By: Camille Joyce Carreon\n"
+                ;
     }
     
     public Menu_and_Cart() 
     {
         initComponents();
+        HashMap<String, Double> orders = new HashMap<>();
+        
+        //declaring values with HashMap
+        orders.put("Loaded Nachos", 3.49d);
+        orders.put("Beast Burger", 7.99d);
+        orders.put("Pizza Slice", 3.99d);
+        orders.put("NZ Fries", 2.99d);
+        orders.put("Hash Bites", 2.99d);
+        orders.put("Fried BO-rings", 2.99d);
+        orders.put("Unlimited Soda", 1.99d);
+        orders.put("Bottled Water", 1.59d);
+        orders.put("Fruit Juices", 2.50d);
+
+        ArrayList<String> addedItems = new ArrayList<>();
+        
     }
     
-    public void receiptDetails()
+    private void voidButtons()
     {
-        /*Print_Invoice read = new Print_Invoice(file);
-        read.readInvoice(file);
-        Invoice.setTex(read);*/
+        ActionListener alButton = new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent ae)
+            {
+                Object obj = ae.getSource();
+                
+                if(cartPanel.getText().contains("No orders added."))
+                {
+                    voidItem();
+                }           
+                if(obj == nachos_button)
+                {
+                    quantity[0]--;
+                }
+            }
+        };
     }
     
     private String writeInvoice()
@@ -86,27 +118,32 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         return String.valueOf(randomString);
     }
     
-
-    private void clear()
+    private void readfile()
     {
-        int warningPopUp = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel your order?");
-        if(warningPopUp == JOptionPane.YES_OPTION)
+        try
         {
-            cartPanel.setText("No orders added.");
-        }   
-        else if (warningPopUp == JOptionPane.NO_OPTION)
+            FileReader fr = new FileReader("currentCart.txt");
+            BufferedReader buffRead = new BufferedReader(fr);
+            StringBuilder invoiceContent = new StringBuilder();
+            String invoiceOrder;
+            buffRead.read();
+            while ((invoiceOrder = buffRead.readLine()) != null)
+            {
+                //To append each line
+                invoiceContent.append(invoiceOrder).append("\n");
+            }
+            buffRead.close();
+        }
+        catch (IOException ex) 
         {
-            if(cartPanel.getText() == null || cartPanel.getText().isEmpty())
-            {
-                JOptionPane.showMessageDialog(this, "Unable to cancel as the cart is empty.");
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(this, "Continuing order...");
-            }
-        }  
+            Logger.getLogger(Menu_and_Cart.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
+    private void voidItem()
+    {
+            JOptionPane.showMessageDialog(this, "Invalid void item reason:    No orders added.");  
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,10 +159,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        total = new javax.swing.JLabel();
-        cartPane = new javax.swing.JScrollPane();
-        cartPanel = new javax.swing.JLabel();
         Category_foods = new javax.swing.JLabel();
         Category_sides = new javax.swing.JLabel();
         Category_drinks = new javax.swing.JLabel();
@@ -159,9 +192,12 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         cancelOrder_button = new javax.swing.JButton();
         voidItem_button = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        cartPanel = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        Invoice = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Invoice = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordering System - inc-READY-ble!");
@@ -193,30 +229,12 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Click on an item to add to your order.");
 
-        total.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        total.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        cartPanel.setText("No orders added.");
-        cartPanel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        cartPane.setViewportView(cartPanel);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cartPane, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,17 +243,11 @@ public class Menu_and_Cart extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cartPane, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(total)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         Body_Panel.add(jPanel2);
-        jPanel2.setBounds(10, 20, 240, 290);
+        jPanel2.setBounds(10, 20, 240, 60);
 
         Category_foods.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Category_foods.setForeground(new java.awt.Color(255, 105, 105));
@@ -345,6 +357,11 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         pizza_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pizza_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         pizza_button.setIconTextGap(10);
+        pizza_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pizza_buttonActionPerformed(evt);
+            }
+        });
         Body_Panel.add(pizza_button);
         pizza_button.setBounds(640, 40, 180, 90);
 
@@ -512,6 +529,18 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         Body_Panel.add(voidItem_button);
         voidItem_button.setBounds(10, 320, 110, 40);
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 245, 224));
+
+        cartPanel.setBackground(new java.awt.Color(255, 245, 224));
+        cartPanel.setColumns(20);
+        cartPanel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cartPanel.setRows(5);
+        cartPanel.setText("No orders added.");
+        jScrollPane1.setViewportView(cartPanel);
+
+        Body_Panel.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 80, 240, 230);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -525,28 +554,26 @@ public class Menu_and_Cart extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        Invoice.setBackground(new java.awt.Color(255, 51, 51));
-        Invoice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Invoice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Invoice.setColumns(20);
+        Invoice.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        Invoice.setRows(8);
+        jScrollPane2.setViewportView(Invoice);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Invoice, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Invoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2))
         );
-
-        Invoice.getAccessibleContext().setAccessibleName("jlabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -556,13 +583,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(Body_Panel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
                     .addComponent(Header_Panel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 585, Short.MAX_VALUE)
+                    .addGap(0, 597, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 584, Short.MAX_VALUE)))
+                    .addGap(0, 596, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -585,15 +613,16 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void print_invoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_invoiceActionPerformed
-    if(cartPanel.getText()=="No orders added.")
+    if(cartPanel.getText().contains("No orders added."))
     {
-        JOptionPane.showMessageDialog(this, "Invalid print reason: No orders added.");
+        JOptionPane.showMessageDialog(this, "Invalid print reason:          No orders added.");
     }
     else
     {
         writeInvoice();
         JOptionPane.showMessageDialog(this, "Printing Invoice...");
-        Invoice.setText(cartPanel.getText());
+        Menu_and_Cart invoiceHeader = new Menu_and_Cart(); 
+        Invoice.setText(invoiceHeader.toString() + cartPanel.getText());
         //new Print_Invoice().setVisible(true);    
     }
     
@@ -601,27 +630,54 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     }//GEN-LAST:event_print_invoiceActionPerformed
 
     private void nachos_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nachos_buttonActionPerformed
-    
-    quantity++;
-    //String currentText = cartPanel.getText();
-    String nacho_details = "\nLoaded Nachos \t $" + food_tax + "\t x";
-    cartPanel.setText(nacho_details + quantity);
+        quantity[0]++;
+        String nacho_details = "Loaded Nachos \t $" + food_tax + "\t x"; 
+        String currentText = cartPanel.getText() + "\n";
+        cartPanel.getText(/*orders.get("Loaded Nachos")*/);
+        cartPanel.setText(currentText + nacho_details + quantity[0]);
     }//GEN-LAST:event_nachos_buttonActionPerformed
-
+    
     private void cancelOrder_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrder_buttonActionPerformed
-    clear();
-
+    int warningPopUp = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel your order?");
+    if(warningPopUp == JOptionPane.YES_OPTION)
+    {
+        cartPanel.setText("No orders added.");
+        quantity = new int[] {0,0,0,0,0,0,0,0,0};
+    }   
+    else if (warningPopUp == JOptionPane.NO_OPTION)
+    {
+        if(cartPanel.getText() == null || cartPanel.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Unable to cancel as the cart is empty.");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Continuing order...");
+        }
+    } 
     }//GEN-LAST:event_cancelOrder_buttonActionPerformed
 
     private void voidItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidItem_buttonActionPerformed
-    
+    voidButtons();
     }//GEN-LAST:event_voidItem_buttonActionPerformed
 
     private void burger_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_burger_buttonActionPerformed
-    quantity++;
-    String currentText = cartPanel.getText();
-    cartPanel.setText("\nBeast Burger $" + food_tax + "\tx" + quantity);        // TODO add your handling code here:
+        quantity[1]++;
+        String burger_details = "Beast Burger\t$" + food_tax + " x ";
+        String currentText = cartPanel.getText() + "\n";
+        cartPanel.getText();
+        cartPanel.setText(currentText + burger_details + quantity[1]);
+
     }//GEN-LAST:event_burger_buttonActionPerformed
+
+    private void pizza_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pizza_buttonActionPerformed
+    quantity[2]++;
+    String currentText = cartPanel.getText() + "\n";
+    String pizza_string = "Pizza Slice\t$" + food_tax + " x ";
+    cartPanel.getText();
+    cartPanel.setText(currentText + pizza_string + quantity[2]);
+
+    }//GEN-LAST:event_pizza_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -668,13 +724,12 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JLabel Category_foods;
     private javax.swing.JLabel Category_sides;
     private javax.swing.JPanel Header_Panel;
-    private javax.swing.JLabel Invoice;
+    private javax.swing.JTextArea Invoice;
     private javax.swing.JButton burger_button;
     private javax.swing.JLabel burger_price;
     private javax.swing.JLabel burger_title;
     private javax.swing.JButton cancelOrder_button;
-    private javax.swing.JScrollPane cartPane;
-    private javax.swing.JLabel cartPanel;
+    private javax.swing.JTextArea cartPanel;
     private javax.swing.JLabel inc_READY_ble;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton5;
@@ -699,7 +754,8 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton nachos_button;
     private javax.swing.JLabel nachos_price;
     private javax.swing.JLabel nachos_title;
@@ -707,7 +763,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JLabel pizza_price;
     private javax.swing.JLabel pizza_title;
     private javax.swing.JButton print_invoice;
-    private javax.swing.JLabel total;
     private javax.swing.JButton voidItem_button;
     // End of variables declaration//GEN-END:variables
 }
