@@ -5,8 +5,14 @@
 package project2_GUI;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,12 +32,18 @@ public class Menu_and_Cart extends javax.swing.JFrame {
 
     
     int quantity;   //invoice value when button clicked.
-
+    public String toString()
+    {
+        return String.valueOf(quantity);
+    }
+    
     public Menu_and_Cart() 
     {
         initComponents();
     }
+    
 
+    
     private void clear()
     {
         int warningPopUp = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel your order?");
@@ -474,7 +486,47 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void print_invoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_invoiceActionPerformed
-        // TODO add your handling code here:
+    if(cartPanel.getText()=="No orders added.")
+    {
+        JOptionPane.showMessageDialog(this, "Invalid print reason: No orders added.");
+    }
+    else
+    {
+        //mixture of lowercase and uppercase alphabet + numeric
+        String alphaNumeric = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567809";
+        StringBuilder sb = new StringBuilder();
+
+        //creating RANDOM STRING AND INT TO GENERATE UNIQUE FILEWRITER TEXT NAME
+        Random randTYPE = new Random();
+        
+        int indexLength = 10;
+        
+        for(int i = 0; i < indexLength; i++)
+        {
+            //generating random index from the alphanumeric content
+            int index = randTYPE.nextInt(alphaNumeric.length());
+            char randomChar = alphaNumeric.charAt(index);
+            
+            //adding value to the stringbuilder
+            sb.append(randomChar);
+        }
+        String randomString = sb.toString();
+        
+        try 
+        {
+            FileWriter receipt = new FileWriter(randomString + ".txt");
+            BufferedWriter newReceipt = new BufferedWriter(receipt);
+            newReceipt.write(cartPanel.getText());
+            newReceipt.close();
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(Menu_and_Cart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(this, "Printing Invoice...");
+        new Print_Invoice(randomString).setVisible(true);    
+    }
+    
+    
     }//GEN-LAST:event_print_invoiceActionPerformed
 
     private void nachos_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nachos_buttonActionPerformed

@@ -5,16 +5,11 @@
 package project2_GUI;
 
 import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import java.sql.ResultSet;
-import javax.swing.JLabel;
 
 /**
  * 
@@ -27,14 +22,42 @@ import javax.swing.JLabel;
  */
 public class Print_Invoice extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
-    public Print_Invoice() {
-        initComponents();
-        
-    }
+    private String filename;
 
+    public Print_Invoice(String filename) {
+        this.filename = filename;
+        readInvoice();  
+    }
+    
+    public Print_Invoice()
+    {
+        initComponents();
+    }
+    
+
+    private void readInvoice()
+    {
+        try
+        {
+            FileReader fr = new FileReader(filename + ".txt");
+            BufferedReader buffRead = new BufferedReader(fr);
+            StringBuilder invoiceContent = new StringBuilder();
+            String invoiceOrder;
+            buffRead.read();
+            while ((invoiceOrder = buffRead.readLine()) != null)
+            {
+                //To append each line
+                invoiceContent.append(invoiceOrder).append("\n");
+            }
+            Invoice.setText(invoiceContent.toString());
+            buffRead.close();
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(Menu_and_Cart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,21 +67,26 @@ public class Print_Invoice extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Invoice = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordering System - inc-READY-ble!");
         setBackground(new java.awt.Color(255, 245, 224));
         setForeground(java.awt.Color.darkGray);
         setResizable(false);
 
+        Invoice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Invoice.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 415, Short.MAX_VALUE)
+            .addComponent(Invoice, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
+            .addComponent(Invoice, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleName("inc-READY-ble! Ordering System - LOGIN\n");
@@ -107,5 +135,6 @@ public class Print_Invoice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Invoice;
     // End of variables declaration//GEN-END:variables
 }
