@@ -14,7 +14,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -31,21 +33,36 @@ import javax.swing.JOptionPane;
 public class Menu_and_Cart extends javax.swing.JFrame {
     
     //for calculations
-    private double food_tax = .13d;
     private int [] quantity = new int [] {0,0,0,0,0,0,0,0,0};   //invoice value when button clicked.
     
-    public String toString()
+    private double totalamount = 0.0d;
+    private double food_tax = .13d;
+    
+
+    
+    private Map<String, Double> orders = new HashMap<>();
+    private ArrayList<String> addedItems = new ArrayList<>(); //use this code!
+    
+    public String headerToString()
     {
-        return "          inc-READY-ble!          \n"
-                + "= = = = inc-READY-ble! AUT = = = =\n"
-                + "\nSoftware Made By: Camille Joyce Carreon\n"
+            return"                           inc-READY-ble!\n"
+                + "                 = = = = inc-READY-ble AUT = = = =\n"
+                + "          <<< Software Made By: Camille Joyce Carreon >>>\n"
+                + "                   KIA ORA, OUR DEAREST CUSTOMER \t\n"
+                + "        WE OFFER YOU THE BEST QUALITY AND PRICE FOR YOUR MEALS\n"
+                + "\t= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\t\n"
+                + "\t\tITEM\t\tPRICE\t\tQUANTITY\n"
                 ;
+    }
+    
+    public String footerToString()
+    {
+        return "";
     }
     
     public Menu_and_Cart() 
     {
         initComponents();
-        HashMap<String, Double> orders = new HashMap<>();
         
         //declaring values with HashMap
         orders.put("Loaded Nachos", 3.49d);
@@ -57,30 +74,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         orders.put("Unlimited Soda", 1.99d);
         orders.put("Bottled Water", 1.59d);
         orders.put("Fruit Juices", 2.50d);
-
-        ArrayList<String> addedItems = new ArrayList<>();
         
-    }
-    
-    private void voidButtons()
-    {
-        ActionListener alButton = new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent ae)
-            {
-                Object obj = ae.getSource();
-                
-                if(cartPanel.getText().contains("No orders added."))
-                {
-                    voidItem();
-                }           
-                if(obj == nachos_button)
-                {
-                    quantity[0]--;
-                }
-            }
-        };
     }
     
     private String writeInvoice()
@@ -104,11 +98,12 @@ public class Menu_and_Cart extends javax.swing.JFrame {
             sb.append(randomChar);
         }
         String randomString = sb.toString();
-        
         try 
         {
             FileWriter receipt = new FileWriter(randomString + ".txt");
             BufferedWriter newReceipt = new BufferedWriter(receipt);
+            String header = toString();
+            newReceipt.write(header);
             newReceipt.write(cartPanel.getText());
             newReceipt.close();
         } 
@@ -140,10 +135,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         }
     }
     
-    private void voidItem()
-    {
-            JOptionPane.showMessageDialog(this, "Invalid void item reason:    No orders added.");  
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,11 +145,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private void initComponents() {
 
         Header_Panel = new javax.swing.JPanel();
+        LogoutButton = new javax.swing.JButton();
         inc_READY_ble = new javax.swing.JLabel();
         Body_Panel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        cartPanel = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        cart_title = new javax.swing.JLabel();
+        cart_label = new javax.swing.JLabel();
         Category_foods = new javax.swing.JLabel();
         Category_sides = new javax.swing.JLabel();
         Category_drinks = new javax.swing.JLabel();
@@ -169,34 +163,32 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         burger_title = new javax.swing.JLabel();
         burger_price = new javax.swing.JLabel();
         burger_button = new javax.swing.JButton();
-        pizza_price = new javax.swing.JLabel();
         pizza_title = new javax.swing.JLabel();
+        pizza_price = new javax.swing.JLabel();
         pizza_button = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        cancelOrder_button = new javax.swing.JButton();
+        fries_title = new javax.swing.JLabel();
+        fries_price = new javax.swing.JLabel();
+        fries_button = new javax.swing.JButton();
+        hashbites_title = new javax.swing.JLabel();
+        hashbites_price = new javax.swing.JLabel();
+        hashbites_button = new javax.swing.JButton();
+        onionrings_title = new javax.swing.JLabel();
+        onionrings_price = new javax.swing.JLabel();
+        onionrings_button = new javax.swing.JButton();
+        soda_title = new javax.swing.JLabel();
+        soda_price = new javax.swing.JLabel();
+        soda_button = new javax.swing.JButton();
+        water_title = new javax.swing.JLabel();
+        water_price = new javax.swing.JLabel();
+        water_button = new javax.swing.JButton();
+        juice_title = new javax.swing.JLabel();
+        juice_price = new javax.swing.JLabel();
+        juice_button = new javax.swing.JButton();
+        addItem_button = new javax.swing.JButton();
         voidItem_button = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        cartPanel = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        receiptPane = new javax.swing.JScrollPane();
         Invoice = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -208,6 +200,18 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         Header_Panel.setBackground(new java.awt.Color(199, 0, 57));
         Header_Panel.setLayout(null);
 
+        LogoutButton.setBackground(new java.awt.Color(255, 245, 224));
+        LogoutButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LogoutButton.setForeground(new java.awt.Color(255, 105, 105));
+        LogoutButton.setText("L O G O U T");
+        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutButtonActionPerformed(evt);
+            }
+        });
+        Header_Panel.add(LogoutButton);
+        LogoutButton.setBounds(680, 20, 130, 31);
+
         inc_READY_ble.setFont(new java.awt.Font("Agency FB", 1, 55)); // NOI18N
         inc_READY_ble.setForeground(new java.awt.Color(242, 242, 242));
         inc_READY_ble.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -218,36 +222,48 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         Body_Panel.setBackground(new java.awt.Color(20, 30, 70));
         Body_Panel.setLayout(null);
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 245, 224));
+
+        cartPanel.setEditable(false);
+        cartPanel.setBackground(new java.awt.Color(255, 245, 224));
+        cartPanel.setColumns(20);
+        cartPanel.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        cartPanel.setRows(5);
+        jScrollPane1.setViewportView(cartPanel);
+
+        Body_Panel.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 80, 220, 220);
+
         jPanel2.setBackground(new java.awt.Color(255, 245, 224));
 
-        jLabel1.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Welcome to inc-READY-ble!");
+        cart_title.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        cart_title.setForeground(new java.awt.Color(255, 105, 105));
+        cart_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cart_title.setText("Welcome to inc-READY-ble!");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Click on an item to add to your order.");
+        cart_label.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        cart_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cart_label.setText("- - - Your virtual food cart - - -");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cart_title, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+            .addComponent(cart_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1)
+                .addComponent(cart_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cart_label, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         Body_Panel.add(jPanel2);
-        jPanel2.setBounds(10, 20, 240, 60);
+        jPanel2.setBounds(10, 20, 240, 290);
 
         Category_foods.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Category_foods.setForeground(new java.awt.Color(255, 105, 105));
@@ -337,13 +353,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         Body_Panel.add(burger_button);
         burger_button.setBounds(450, 40, 180, 90);
 
-        pizza_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        pizza_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pizza_price.setText("$3.99");
-        pizza_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Body_Panel.add(pizza_price);
-        pizza_price.setBounds(730, 90, 90, 15);
-
         pizza_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         pizza_title.setForeground(new java.awt.Color(255, 105, 105));
         pizza_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -351,6 +360,13 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         pizza_title.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         Body_Panel.add(pizza_title);
         pizza_title.setBounds(740, 70, 70, 16);
+
+        pizza_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        pizza_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pizza_price.setText("$3.99");
+        pizza_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Body_Panel.add(pizza_price);
+        pizza_price.setBounds(730, 90, 90, 15);
 
         pizza_button.setBackground(new java.awt.Color(255, 245, 224));
         pizza_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/mixed pizza-.png"))); // NOI18N
@@ -365,157 +381,157 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         Body_Panel.add(pizza_button);
         pizza_button.setBounds(640, 40, 180, 90);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("NZ Fries");
-        jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        Body_Panel.add(jLabel8);
-        jLabel8.setBounds(350, 210, 80, 16);
+        fries_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        fries_title.setForeground(new java.awt.Color(255, 105, 105));
+        fries_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fries_title.setText("NZ Fries");
+        fries_title.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Body_Panel.add(fries_title);
+        fries_title.setBounds(350, 210, 80, 16);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("$2.99");
-        jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Body_Panel.add(jLabel9);
-        jLabel9.setBounds(340, 230, 100, 15);
+        fries_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        fries_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fries_price.setText("$2.99");
+        fries_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Body_Panel.add(fries_price);
+        fries_price.setBounds(340, 230, 100, 15);
 
-        jButton5.setBackground(new java.awt.Color(255, 245, 224));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Fries-.jpg"))); // NOI18N
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton5.setIconTextGap(10);
-        Body_Panel.add(jButton5);
-        jButton5.setBounds(260, 180, 180, 90);
+        fries_button.setBackground(new java.awt.Color(255, 245, 224));
+        fries_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Fries-.jpg"))); // NOI18N
+        fries_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fries_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        fries_button.setIconTextGap(10);
+        Body_Panel.add(fries_button);
+        fries_button.setBounds(260, 180, 180, 90);
 
-        jLabel25.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("Hash Bites");
-        jLabel25.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        Body_Panel.add(jLabel25);
-        jLabel25.setBounds(550, 210, 70, 16);
+        hashbites_title.setBackground(new java.awt.Color(255, 255, 255));
+        hashbites_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        hashbites_title.setForeground(new java.awt.Color(255, 105, 105));
+        hashbites_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hashbites_title.setText("Hash Bites");
+        hashbites_title.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Body_Panel.add(hashbites_title);
+        hashbites_title.setBounds(550, 210, 70, 16);
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("$2.99");
-        jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Body_Panel.add(jLabel26);
-        jLabel26.setBounds(530, 230, 100, 15);
+        hashbites_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        hashbites_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hashbites_price.setText("$2.99");
+        hashbites_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Body_Panel.add(hashbites_price);
+        hashbites_price.setBounds(530, 230, 100, 15);
 
-        jButton6.setBackground(new java.awt.Color(255, 245, 224));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Hash bites-.png"))); // NOI18N
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.setIconTextGap(10);
-        Body_Panel.add(jButton6);
-        jButton6.setBounds(450, 180, 180, 90);
+        hashbites_button.setBackground(new java.awt.Color(255, 245, 224));
+        hashbites_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Hash bites-.png"))); // NOI18N
+        hashbites_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hashbites_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        hashbites_button.setIconTextGap(10);
+        Body_Panel.add(hashbites_button);
+        hashbites_button.setBounds(450, 180, 180, 90);
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText("<HTML><CENTER>Fried<BR />BO-rings</CENTER></HTML>");
-        jLabel27.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        Body_Panel.add(jLabel27);
-        jLabel27.setBounds(730, 200, 80, 32);
+        onionrings_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        onionrings_title.setForeground(new java.awt.Color(255, 105, 105));
+        onionrings_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        onionrings_title.setText("<HTML><CENTER>Fried<BR />BO-rings</CENTER></HTML>");
+        onionrings_title.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Body_Panel.add(onionrings_title);
+        onionrings_title.setBounds(730, 200, 80, 32);
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("$2.99");
-        jLabel28.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Body_Panel.add(jLabel28);
-        jLabel28.setBounds(720, 235, 100, 20);
+        onionrings_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        onionrings_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        onionrings_price.setText("$2.99");
+        onionrings_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Body_Panel.add(onionrings_price);
+        onionrings_price.setBounds(720, 235, 100, 20);
 
-        jButton7.setBackground(new java.awt.Color(255, 245, 224));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Fried Onion-.png"))); // NOI18N
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setIconTextGap(10);
-        Body_Panel.add(jButton7);
-        jButton7.setBounds(640, 180, 180, 90);
+        onionrings_button.setBackground(new java.awt.Color(255, 245, 224));
+        onionrings_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Fried Onion-.png"))); // NOI18N
+        onionrings_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        onionrings_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        onionrings_button.setIconTextGap(10);
+        Body_Panel.add(onionrings_button);
+        onionrings_button.setBounds(640, 180, 180, 90);
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("<HTML><CENTER>Unlimited<BR />Soda</CENTER></HTML>");
-        jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        Body_Panel.add(jLabel11);
-        jLabel11.setBounds(350, 340, 80, 30);
+        soda_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        soda_title.setForeground(new java.awt.Color(255, 105, 105));
+        soda_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        soda_title.setText("<HTML><CENTER>Unlimited<BR />Soda</CENTER></HTML>");
+        soda_title.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Body_Panel.add(soda_title);
+        soda_title.setBounds(350, 340, 80, 30);
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("$1.99");
-        jLabel12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Body_Panel.add(jLabel12);
-        jLabel12.setBounds(350, 375, 80, 20);
+        soda_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        soda_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        soda_price.setText("$1.99");
+        soda_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Body_Panel.add(soda_price);
+        soda_price.setBounds(350, 375, 80, 20);
 
-        jButton8.setBackground(new java.awt.Color(255, 245, 224));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/soda-.jpg"))); // NOI18N
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.setIconTextGap(10);
-        Body_Panel.add(jButton8);
-        jButton8.setBounds(260, 320, 180, 90);
+        soda_button.setBackground(new java.awt.Color(255, 245, 224));
+        soda_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/soda-.jpg"))); // NOI18N
+        soda_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        soda_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        soda_button.setIconTextGap(10);
+        Body_Panel.add(soda_button);
+        soda_button.setBounds(260, 320, 180, 90);
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setText("<HTML><CENTER>Bottled<BR /> Water</CENTER></HTML> ");
-        jLabel30.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        Body_Panel.add(jLabel30);
-        jLabel30.setBounds(540, 340, 80, 30);
+        water_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        water_title.setForeground(new java.awt.Color(255, 105, 105));
+        water_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        water_title.setText("<HTML><CENTER>Bottled<BR /> Water</CENTER></HTML> ");
+        water_title.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Body_Panel.add(water_title);
+        water_title.setBounds(540, 340, 80, 30);
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setText("$1.59");
-        jLabel31.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Body_Panel.add(jLabel31);
-        jLabel31.setBounds(540, 375, 80, 20);
+        water_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        water_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        water_price.setText("$1.59");
+        water_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Body_Panel.add(water_price);
+        water_price.setBounds(540, 375, 80, 20);
 
-        jButton9.setBackground(new java.awt.Color(255, 245, 224));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Bottled water-.png"))); // NOI18N
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.setIconTextGap(10);
-        Body_Panel.add(jButton9);
-        jButton9.setBounds(450, 320, 180, 90);
+        water_button.setBackground(new java.awt.Color(255, 245, 224));
+        water_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Bottled water-.png"))); // NOI18N
+        water_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        water_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        water_button.setIconTextGap(10);
+        Body_Panel.add(water_button);
+        water_button.setBounds(450, 320, 180, 90);
 
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("Fruit Juices");
-        jLabel32.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        Body_Panel.add(jLabel32);
-        jLabel32.setBounds(740, 350, 70, 16);
+        juice_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        juice_title.setForeground(new java.awt.Color(255, 105, 105));
+        juice_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        juice_title.setText("Fruit Juices");
+        juice_title.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Body_Panel.add(juice_title);
+        juice_title.setBounds(740, 350, 70, 16);
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("$2.50");
-        jLabel33.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Body_Panel.add(jLabel33);
-        jLabel33.setBounds(730, 370, 80, 15);
+        juice_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        juice_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        juice_price.setText("$2.50");
+        juice_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Body_Panel.add(juice_price);
+        juice_price.setBounds(730, 370, 80, 15);
 
-        jButton10.setBackground(new java.awt.Color(255, 245, 224));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/fruit juices-.png"))); // NOI18N
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton10.setIconTextGap(10);
-        jButton10.setName(""); // NOI18N
-        Body_Panel.add(jButton10);
-        jButton10.setBounds(640, 320, 180, 90);
+        juice_button.setBackground(new java.awt.Color(255, 245, 224));
+        juice_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/fruit juices-.png"))); // NOI18N
+        juice_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        juice_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        juice_button.setIconTextGap(10);
+        juice_button.setName(""); // NOI18N
+        Body_Panel.add(juice_button);
+        juice_button.setBounds(640, 320, 180, 90);
 
-        cancelOrder_button.setBackground(new java.awt.Color(199, 0, 57));
-        cancelOrder_button.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        cancelOrder_button.setForeground(new java.awt.Color(255, 245, 224));
-        cancelOrder_button.setText("CANCEL");
-        cancelOrder_button.addActionListener(new java.awt.event.ActionListener() {
+        addItem_button.setBackground(new java.awt.Color(199, 0, 57));
+        addItem_button.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        addItem_button.setForeground(new java.awt.Color(255, 245, 224));
+        addItem_button.setText("ADD ITEM");
+        addItem_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelOrder_buttonActionPerformed(evt);
+                addItem_buttonActionPerformed(evt);
             }
         });
-        Body_Panel.add(cancelOrder_button);
-        cancelOrder_button.setBounds(130, 320, 110, 40);
+        Body_Panel.add(addItem_button);
+        addItem_button.setBounds(130, 320, 110, 40);
 
         voidItem_button.setBackground(new java.awt.Color(199, 0, 57));
         voidItem_button.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -528,18 +544,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         });
         Body_Panel.add(voidItem_button);
         voidItem_button.setBounds(10, 320, 110, 40);
-
-        jScrollPane1.setBackground(new java.awt.Color(255, 245, 224));
-
-        cartPanel.setBackground(new java.awt.Color(255, 245, 224));
-        cartPanel.setColumns(20);
-        cartPanel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        cartPanel.setRows(5);
-        cartPanel.setText("No orders added.");
-        jScrollPane1.setViewportView(cartPanel);
-
-        Body_Panel.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 80, 240, 230);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -554,10 +558,13 @@ public class Menu_and_Cart extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        receiptPane.setHorizontalScrollBar(null);
+
+        Invoice.setEditable(false);
         Invoice.setColumns(20);
         Invoice.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         Invoice.setRows(8);
-        jScrollPane2.setViewportView(Invoice);
+        receiptPane.setViewportView(Invoice);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -565,14 +572,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(receiptPane, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2))
+                .addComponent(receiptPane))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -623,10 +630,9 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Printing Invoice...");
         Menu_and_Cart invoiceHeader = new Menu_and_Cart(); 
         Invoice.setText(invoiceHeader.toString() + cartPanel.getText());
+        cartPanel.setText("");
         //new Print_Invoice().setVisible(true);    
     }
-    
-    
     }//GEN-LAST:event_print_invoiceActionPerformed
 
     private void nachos_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nachos_buttonActionPerformed
@@ -637,28 +643,311 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         cartPanel.setText(currentText + nacho_details + quantity[0]);
     }//GEN-LAST:event_nachos_buttonActionPerformed
     
-    private void cancelOrder_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrder_buttonActionPerformed
-    int warningPopUp = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel your order?");
-    if(warningPopUp == JOptionPane.YES_OPTION)
-    {
-        cartPanel.setText("No orders added.");
-        quantity = new int[] {0,0,0,0,0,0,0,0,0};
-    }   
-    else if (warningPopUp == JOptionPane.NO_OPTION)
-    {
-        if(cartPanel.getText() == null || cartPanel.getText().isEmpty())
+    private void addItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItem_buttonActionPerformed
+        if(cartPanel.getText().isEmpty())
         {
-            JOptionPane.showMessageDialog(this, "Unable to cancel as the cart is empty.");
+            JOptionPane.showMessageDialog(cartPanel, "Invalid void item reason:     Cart is Empty.");
+            cartPanel.setText("No orders added.");
+        }
+        else if (cartPanel.getText().equals("No orders added."))
+        {
+            JOptionPane.showMessageDialog(cartPanel, "Invalid void item reason:     No orders added.");
         }
         else
         {
-            JOptionPane.showMessageDialog(this, "Continuing order...");
+            JOptionPane.showMessageDialog(this, "Click on the item to add product.");
+            Set<Map.Entry<String, Double>> mapEntrySet = orders.entrySet();
+            ActionListener add_alButton = new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae)
+                {
+                    Object obj = ae.getSource();
+                    Object [] options = {"ALL", "ONE ONLY", "CANCEL"}; //JOPTIONPANE selections to replace YES OR NO
+                    //continue this code 
+                }
+            };
         }
-    } 
-    }//GEN-LAST:event_cancelOrder_buttonActionPerformed
+    }//GEN-LAST:event_addItem_buttonActionPerformed
 
     private void voidItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidItem_buttonActionPerformed
-    voidButtons();
+        if(cartPanel.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(cartPanel, "Invalid void item reason:     Cart is Empty.");
+            cartPanel.setText("No orders added.");
+        }
+        else if (cartPanel.getText().equals("No orders added."))
+        {
+            JOptionPane.showMessageDialog(cartPanel, "Invalid void item reason:     No orders added.");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Click on the item to delete value.");
+            Set<Map.Entry<String, Double>> mapEntrySet = orders.entrySet();
+            ActionListener void_alButton = new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae)
+                {
+                    Object obj = ae.getSource();
+                    Object [] options = {"ALL", "ONE ONLY", "CANCEL"}; //JOPTIONPANE selections to replace YES OR NO
+
+                    if(obj == nachos_button)
+                    {
+                        int voidOptions2 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
+                        switch (voidOptions2) {
+                            case JOptionPane.CANCEL_OPTION:
+                                JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
+                                addItem_buttonActionPerformed(evt);
+                                break;
+                            case JOptionPane.YES_OPTION:
+                                quantity[0] = 0;
+                                cartPanel.setText("");
+                                break;
+                            case JOptionPane.NO_OPTION:
+                                if(quantity[0] > 0)
+                                {
+                                    quantity[0] --;
+                                    double nachosPrice = orders.get("Loaded Nachos");
+                                    cartPanel.setText("\tLoaded Nachos\t$" + nachosPrice + "\tx " + quantity[0]);
+                                }
+                                else
+                                {
+                                    quantity[0] = 0;
+                                    cartPanel.setText("");
+                                }   break;
+                            default:
+                                break;
+                        }
+                    if(obj == burger_button)
+                    {
+                        int voidOptions1 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
+                            switch (voidOptions1) {
+                                case JOptionPane.CANCEL_OPTION:
+                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
+                                    addItem_buttonActionPerformed(evt);
+                                    break;
+                                case JOptionPane.YES_OPTION:
+                                    quantity[1] = 0;
+                                    cartPanel.setText("");
+                                    break;
+                                case JOptionPane.NO_OPTION:
+                                    if(quantity[1] > 0)
+                                    {
+                                        quantity[1] --;
+                                        double burgerPrice = orders.get("Beast Burger");
+                                        cartPanel.setText("\tBeast Burger\t$" + burgerPrice + "\tx " + quantity[1]);
+                                    }
+                                    else
+                                    {
+                                        quantity[1] = 0;
+                                        cartPanel.setText("");
+                                    }       break;
+                                default:
+                                    break;
+                            }
+                    }
+                    if(obj == pizza_button)
+                    {
+                        int voidOptions3 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
+                            switch (voidOptions3) {
+                                case JOptionPane.CANCEL_OPTION:
+                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
+                                    addItem_buttonActionPerformed(evt);
+                                    break;
+                                case JOptionPane.YES_OPTION:
+                                    quantity[2] = 0;
+                                    cartPanel.setText("");
+                                    break;
+                                case JOptionPane.NO_OPTION:
+                                    if(quantity[2] > 0)
+                                    {
+                                        quantity[2] --;
+                                        double pizzaPrice = orders.get("Pizza Slice");
+                                        cartPanel.setText("\tPizza Slice\t$" + pizzaPrice + "\tx " + quantity[2]);
+                                    }
+                                    else
+                                    {
+                                        quantity[2] = 0;
+                                        cartPanel.setText("");
+                                    }       break;
+                                default:
+                                    break;
+                            }
+                    } 
+                    if(obj == fries_button)
+                    {
+                        int voidOptions4 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
+                            switch (voidOptions4) {
+                                case JOptionPane.CANCEL_OPTION:
+                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
+                                    addItem_buttonActionPerformed(evt);
+                                    break;
+                                case JOptionPane.YES_OPTION:
+                                    quantity[3] = 0;
+                                    cartPanel.setText("");
+                                    break;
+                                case JOptionPane.NO_OPTION:
+                                    if(quantity[3] > 0)
+                                    {
+                                        quantity[3] --;
+                                        double friesPrice = orders.get("NZ Fries");
+                                        cartPanel.setText("\tNZ Fries\t$" + friesPrice + "\tx " + quantity[3]);
+                                    }
+                                    else
+                                    {
+                                        quantity[3] = 0;
+                                        cartPanel.setText("");
+                                    }       break;
+                                default:
+                                    break;
+                            }
+                    }
+                    if(obj == hashbites_button)
+                    {
+                        int voidOptions5 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
+                            switch (voidOptions5) {
+                                case JOptionPane.CANCEL_OPTION:
+                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
+                                    addItem_buttonActionPerformed(evt);
+                                    break;
+                                case JOptionPane.YES_OPTION:
+                                    quantity[4] = 0;
+                                    cartPanel.setText("");
+                                    break;
+                                case JOptionPane.NO_OPTION:
+                                    if(quantity[4] > 0)
+                                    {
+                                        quantity[4] --;
+                                        double hashbitesPrice = orders.get("Hash Bites");
+                                        cartPanel.setText("\tHash Bites\t$" + hashbitesPrice + "\tx " + quantity[4]);
+                                    }
+                                    else
+                                    {
+                                        quantity[4] = 0;
+                                        cartPanel.setText("");
+                                    }       break;
+                                default:
+                                    break;
+                            }
+                    }
+                    if(obj == onionrings_button)
+                    {
+                        int voidOptions6 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
+                            switch (voidOptions6) {
+                                case JOptionPane.CANCEL_OPTION:
+                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
+                                    addItem_buttonActionPerformed(evt);
+                                    break;
+                                case JOptionPane.YES_OPTION:
+                                    quantity[5] = 0;
+                                    cartPanel.setText("");
+                                    break;
+                                case JOptionPane.NO_OPTION:
+                                    if(quantity[5] > 0)
+                                    {
+                                        quantity[5] --;
+                                        double onionringsPrice = orders.get("Fried BO-rings");
+                                        cartPanel.setText("\tFried BO-rings\t$" + onionringsPrice + "\tx " + quantity[5]);
+                                    }
+                                    else
+                                    {
+                                        quantity[5] = 0;
+                                        cartPanel.setText("");
+                                    }       break;
+                                default:
+                                    break;
+                            }
+                    }
+                    if(obj == soda_button)
+                    {
+                        int voidOptions7 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
+                            switch (voidOptions7) {
+                                case JOptionPane.CANCEL_OPTION:
+                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
+                                    addItem_buttonActionPerformed(evt);
+                                    break;
+                                case JOptionPane.YES_OPTION:
+                                    quantity[6] = 0;
+                                    cartPanel.setText("");
+                                    break;
+                                case JOptionPane.NO_OPTION:
+                                    if(quantity[6] > 0)
+                                    {
+                                        quantity[6] --;
+                                        double sodaPrice = orders.get("Unlimited Soda");
+                                        cartPanel.setText("\tUnlimited Soda\t$" + sodaPrice + "\tx " + quantity[6]);
+                                    }
+                                    else
+                                    {
+                                        quantity[6] = 0;
+                                        cartPanel.setText("");
+                                    }       break;
+                                default:
+                                    break;
+                            }
+                    }
+                    if(obj == water_button)
+                    {
+                        int voidOptions8 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
+                            switch (voidOptions8) {
+                                case JOptionPane.CANCEL_OPTION:
+                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
+                                    addItem_buttonActionPerformed(evt);
+                                    break;
+                                case JOptionPane.YES_OPTION:
+                                    quantity[7] = 0;
+                                    cartPanel.setText("");
+                                    break;
+                                case JOptionPane.NO_OPTION:
+                                    if(quantity[7] > 0)
+                                    {
+                                        quantity[7] --;
+                                        double waterPrice = orders.get("Bottled Water");
+                                        cartPanel.setText("\tBottled Water\t$" + waterPrice + "\tx " + quantity[7]);
+                                    }
+                                    else
+                                    {
+                                        quantity[7] = 0;
+                                        cartPanel.setText("");
+                                    }       break;
+                                default:
+                                    break;
+                            }
+                    }
+                    if(obj == fries_button)
+                    {
+                        int voidOptions9 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
+                        if(voidOptions9 == JOptionPane.CANCEL_OPTION)
+                        {
+                            JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
+                            addItem_buttonActionPerformed(evt);
+                        }
+                        else if(voidOptions2 == JOptionPane.YES_OPTION)
+                        {
+                            quantity[3] = 0;
+                            cartPanel.setText("");
+                        }
+                        else if (voidOptions2 == JOptionPane.NO_OPTION)
+                        {
+                            if(quantity[3] > 0)
+                            {
+                                quantity[3] --;
+                                double friesPrice = orders.get("NZ Fries");
+                                cartPanel.setText("\tNZ Fries\t$" + friesPrice + "\tx " + quantity[3]);
+                            }
+                            else
+                            {
+                                quantity[3] = 0;
+                                cartPanel.setText("");
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        nachos_button.addActionListener(void_alButton);
+        }
     }//GEN-LAST:event_voidItem_buttonActionPerformed
 
     private void burger_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_burger_buttonActionPerformed
@@ -679,9 +968,20 @@ public class Menu_and_Cart extends javax.swing.JFrame {
 
     }//GEN-LAST:event_pizza_buttonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
+        Object [] options = {"YES", "NO"};
+        int warning = JOptionPane.showOptionDialog(this, "Are you sure to logout?", "WARNING", 0, JOptionPane.QUESTION_MESSAGE, null, options, Invoice);
+        if(warning == JOptionPane.YES_OPTION)
+        {
+            Login backTologin = new Login();
+            backTologin.setVisible(true);
+            this.dispose();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Continuing order...");
+        }
+    }//GEN-LAST:event_LogoutButtonActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -725,44 +1025,45 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JLabel Category_sides;
     private javax.swing.JPanel Header_Panel;
     private javax.swing.JTextArea Invoice;
+    private javax.swing.JButton LogoutButton;
+    private javax.swing.JButton addItem_button;
     private javax.swing.JButton burger_button;
     private javax.swing.JLabel burger_price;
     private javax.swing.JLabel burger_title;
-    private javax.swing.JButton cancelOrder_button;
     private javax.swing.JTextArea cartPanel;
+    private javax.swing.JLabel cart_label;
+    private javax.swing.JLabel cart_title;
+    private javax.swing.JButton fries_button;
+    private javax.swing.JLabel fries_price;
+    private javax.swing.JLabel fries_title;
+    private javax.swing.JButton hashbites_button;
+    private javax.swing.JLabel hashbites_price;
+    private javax.swing.JLabel hashbites_title;
     private javax.swing.JLabel inc_READY_ble;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton juice_button;
+    private javax.swing.JLabel juice_price;
+    private javax.swing.JLabel juice_title;
     private javax.swing.JButton nachos_button;
     private javax.swing.JLabel nachos_price;
     private javax.swing.JLabel nachos_title;
+    private javax.swing.JButton onionrings_button;
+    private javax.swing.JLabel onionrings_price;
+    private javax.swing.JLabel onionrings_title;
     private javax.swing.JButton pizza_button;
     private javax.swing.JLabel pizza_price;
     private javax.swing.JLabel pizza_title;
     private javax.swing.JButton print_invoice;
+    private javax.swing.JScrollPane receiptPane;
+    private javax.swing.JButton soda_button;
+    private javax.swing.JLabel soda_price;
+    private javax.swing.JLabel soda_title;
     private javax.swing.JButton voidItem_button;
+    private javax.swing.JButton water_button;
+    private javax.swing.JLabel water_price;
+    private javax.swing.JLabel water_title;
     // End of variables declaration//GEN-END:variables
 }
