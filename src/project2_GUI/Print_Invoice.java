@@ -26,7 +26,9 @@ public class Print_Invoice extends javax.swing.JFrame {
 
     public Print_Invoice(String filename) {
         this.filename = filename;
-        readInvoice();  
+        Menu_and_Cart readInvoice = new Menu_and_Cart();
+        readInvoice.receiptDetails();
+        Invoice.setText(readInvoice.toString());
     }
     
     public Print_Invoice()
@@ -34,8 +36,7 @@ public class Print_Invoice extends javax.swing.JFrame {
         initComponents();
     }
     
-
-    private void readInvoice()
+    private void readInvoice(String filename)
     {
         try
         {
@@ -49,14 +50,12 @@ public class Print_Invoice extends javax.swing.JFrame {
                 //To append each line
                 invoiceContent.append(invoiceOrder).append("\n");
             }
-            Invoice.setText(invoiceContent.toString());
             buffRead.close();
         }
         catch (IOException ex) 
         {
             Logger.getLogger(Menu_and_Cart.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,9 +126,14 @@ public class Print_Invoice extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run(String filename) {
+                new Print_Invoice(filename).setVisible(true);
+                new Print_Invoice(filename).setBackground(Color.red);
+            }
+
+            @Override
             public void run() {
-                new Print_Invoice().setVisible(true);
-                new Print_Invoice().setBackground(Color.red);
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
     }

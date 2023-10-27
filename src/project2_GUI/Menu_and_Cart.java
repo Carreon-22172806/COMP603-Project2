@@ -5,7 +5,9 @@
 package project2_GUI;
 
 import java.awt.Color;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,8 +44,49 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         initComponents();
     }
     
-
+    public void receiptDetails()
+    {
+        /*Print_Invoice read = new Print_Invoice(file);
+        read.readInvoice(file);
+        Invoice.setTex(read);*/
+    }
     
+    private String writeInvoice()
+    {
+        //mixture of lowercase and uppercase alphabet + numeric
+        String alphaNumeric = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567809";
+        StringBuilder sb = new StringBuilder();
+
+        //creating RANDOM STRING AND INT TO GENERATE UNIQUE FILEWRITER TEXT NAME
+        Random randTYPE = new Random();
+        
+        int indexLength = 10;
+        
+        for(int i = 0; i < indexLength; i++)
+        {
+            //generating random index from the alphanumeric content
+            int index = randTYPE.nextInt(alphaNumeric.length());
+            char randomChar = alphaNumeric.charAt(index);
+            
+            //adding value to the stringbuilder
+            sb.append(randomChar);
+        }
+        String randomString = sb.toString();
+        
+        try 
+        {
+            FileWriter receipt = new FileWriter(randomString + ".txt");
+            BufferedWriter newReceipt = new BufferedWriter(receipt);
+            newReceipt.write(cartPanel.getText());
+            newReceipt.close();
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(Menu_and_Cart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return String.valueOf(randomString);
+    }
+    
+
     private void clear()
     {
         int warningPopUp = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel your order?");
@@ -116,6 +159,9 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         cancelOrder_button = new javax.swing.JButton();
         voidItem_button = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        Invoice = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordering System - inc-READY-ble!");
@@ -182,8 +228,8 @@ public class Menu_and_Cart extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cartPane, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cartPane, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(total)
                 .addContainerGap())
         );
@@ -466,19 +512,72 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         Body_Panel.add(voidItem_button);
         voidItem_button.setBounds(10, 320, 110, 40);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        Invoice.setBackground(new java.awt.Color(255, 51, 51));
+        Invoice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Invoice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Invoice, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Invoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Invoice.getAccessibleContext().setAccessibleName("jlabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Header_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-            .addComponent(Body_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(Body_Panel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+                    .addComponent(Header_Panel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 585, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 584, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Header_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
+                .addComponent(Header_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Body_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -492,38 +591,10 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     }
     else
     {
-        //mixture of lowercase and uppercase alphabet + numeric
-        String alphaNumeric = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567809";
-        StringBuilder sb = new StringBuilder();
-
-        //creating RANDOM STRING AND INT TO GENERATE UNIQUE FILEWRITER TEXT NAME
-        Random randTYPE = new Random();
-        
-        int indexLength = 10;
-        
-        for(int i = 0; i < indexLength; i++)
-        {
-            //generating random index from the alphanumeric content
-            int index = randTYPE.nextInt(alphaNumeric.length());
-            char randomChar = alphaNumeric.charAt(index);
-            
-            //adding value to the stringbuilder
-            sb.append(randomChar);
-        }
-        String randomString = sb.toString();
-        
-        try 
-        {
-            FileWriter receipt = new FileWriter(randomString + ".txt");
-            BufferedWriter newReceipt = new BufferedWriter(receipt);
-            newReceipt.write(cartPanel.getText());
-            newReceipt.close();
-        } 
-        catch (IOException ex) {
-            Logger.getLogger(Menu_and_Cart.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        writeInvoice();
         JOptionPane.showMessageDialog(this, "Printing Invoice...");
-        new Print_Invoice(randomString).setVisible(true);    
+        Invoice.setText(cartPanel.getText());
+        //new Print_Invoice().setVisible(true);    
     }
     
     
@@ -597,6 +668,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JLabel Category_foods;
     private javax.swing.JLabel Category_sides;
     private javax.swing.JPanel Header_Panel;
+    private javax.swing.JLabel Invoice;
     private javax.swing.JButton burger_button;
     private javax.swing.JLabel burger_price;
     private javax.swing.JLabel burger_title;
@@ -624,7 +696,9 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton nachos_button;
     private javax.swing.JLabel nachos_price;
