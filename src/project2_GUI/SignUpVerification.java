@@ -60,9 +60,6 @@ public class SignUpVerification extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordering System - inc-READY-ble!");
@@ -73,12 +70,12 @@ public class SignUpVerification extends javax.swing.JFrame {
         HeaderPanel.setBackground(new java.awt.Color(199, 0, 57));
         HeaderPanel.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Agency FB", 1, 55)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("inc-READY-ble!");
         HeaderPanel.add(jLabel1);
-        jLabel1.setBounds(0, 2, 830, 44);
+        jLabel1.setBounds(0, 2, 830, 70);
 
         BodyPanel.setBackground(new java.awt.Color(20, 30, 70));
         BodyPanel.setLayout(null);
@@ -172,7 +169,7 @@ public class SignUpVerification extends javax.swing.JFrame {
         SubBodyPanelLayout.setVerticalGroup(
             SubBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubBodyPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addComponent(SignupHeader)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,19 +193,11 @@ public class SignUpVerification extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addComponent(ProceedButton)
-                .addGap(38, 38, 38))
+                .addGap(10, 10, 10))
         );
 
         BodyPanel.add(SubBodyPanel);
-        SubBodyPanel.setBounds(120, 20, 590, 390);
-
-        jMenu1.setText("HOME");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("EXIT");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        SubBodyPanel.setBounds(120, 30, 590, 360);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,9 +209,9 @@ public class SignUpVerification extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("inc-READY-ble! Ordering System - ACCOUNT VERIFICATION");
@@ -327,9 +316,6 @@ public class SignUpVerification extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField second_textfield;
     private javax.swing.JTextField third_textfield;

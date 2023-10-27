@@ -61,9 +61,6 @@ public class Login extends javax.swing.JFrame {
         FooterPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         SignupButton = new javax.swing.JButton();
-        TitleBar = new javax.swing.JMenuBar();
-        HOME = new javax.swing.JMenu();
-        EXIT = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordering System - inc-READY-ble!");
@@ -74,12 +71,12 @@ public class Login extends javax.swing.JFrame {
         HeaderPanel.setBackground(new java.awt.Color(199, 0, 57));
         HeaderPanel.setLayout(null);
 
-        inc_READY_ble.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
+        inc_READY_ble.setFont(new java.awt.Font("Agency FB", 1, 55)); // NOI18N
         inc_READY_ble.setForeground(new java.awt.Color(242, 242, 242));
         inc_READY_ble.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inc_READY_ble.setText("inc-READY-ble!");
         HeaderPanel.add(inc_READY_ble);
-        inc_READY_ble.setBounds(0, 2, 830, 44);
+        inc_READY_ble.setBounds(0, 2, 830, 70);
 
         BodyPanel.setBackground(new java.awt.Color(20, 30, 70));
         BodyPanel.setLayout(null);
@@ -243,7 +240,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(106, 106, 106)
                 .addComponent(SignupButton)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         FooterPanel1Layout.setVerticalGroup(
             FooterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,15 +253,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         BodyPanel.add(FooterPanel1);
-        FooterPanel1.setBounds(120, 340, 587, 40);
-
-        HOME.setText("HOME");
-        TitleBar.add(HOME);
-
-        EXIT.setText("EXIT");
-        TitleBar.add(EXIT);
-
-        setJMenuBar(TitleBar);
+        FooterPanel1.setBounds(120, 340, 582, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -276,9 +265,9 @@ public class Login extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
+                .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("inc-READY-ble! Ordering System - LOGIN\n");
@@ -378,11 +367,9 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdminLogin;
     private javax.swing.JPanel BodyPanel;
-    private javax.swing.JMenu EXIT;
     private javax.swing.JLabel EmployeeID_label;
     private javax.swing.JPanel FooterPanel;
     private javax.swing.JPanel FooterPanel1;
-    private javax.swing.JMenu HOME;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JTextField ID;
     private javax.swing.JButton LoginButton;
@@ -392,7 +379,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Password_label;
     private javax.swing.JButton SignupButton;
     private javax.swing.JPanel SubBodyPanel;
-    private javax.swing.JMenuBar TitleBar;
     private javax.swing.JLabel inc_READY_ble;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;

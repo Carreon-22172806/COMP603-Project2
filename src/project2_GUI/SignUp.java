@@ -56,9 +56,6 @@ public class SignUp extends javax.swing.JFrame {
         EmployeeIDLabel = new javax.swing.JLabel();
         employeeid_textfield = new javax.swing.JTextField();
         ProceedButton = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordering System - inc-READY-ble!");
@@ -69,12 +66,12 @@ public class SignUp extends javax.swing.JFrame {
         HeaderPanel.setBackground(new java.awt.Color(199, 0, 57));
         HeaderPanel.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Agency FB", 1, 55)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("inc-READY-ble!");
         HeaderPanel.add(jLabel1);
-        jLabel1.setBounds(0, 2, 830, 44);
+        jLabel1.setBounds(0, 2, 830, 70);
 
         BodyPanel.setBackground(new java.awt.Color(20, 30, 70));
         BodyPanel.setLayout(null);
@@ -186,15 +183,7 @@ public class SignUp extends javax.swing.JFrame {
         );
 
         BodyPanel.add(SubBodyPanel);
-        SubBodyPanel.setBounds(120, 100, 590, 220);
-
-        jMenu1.setText("HOME");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("EXIT");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        SubBodyPanel.setBounds(120, 90, 590, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,9 +195,9 @@ public class SignUp extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(HeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
+                .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("inc-READY-ble! Ordering System - SIGNUP");
@@ -315,9 +304,6 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JTextField employeeid_textfield;
     private javax.swing.JTextField firstname_textfield;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField lastname_textfield;
     private javax.swing.JPasswordField password_textfield;

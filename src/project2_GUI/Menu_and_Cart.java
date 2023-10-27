@@ -19,50 +19,37 @@ import javax.swing.JOptionPane;
  * 
  */
 public class Menu_and_Cart extends javax.swing.JFrame {
+    
+    //for calculations
+    private double food_tax = .13d;
+    
 
-    //declaring product prices using double variable; making it private objects
-    private double food_tax = 0.13d;
-    private double nachos_price = 3.48d;
-    private double burger_price = 7.99d;
-    private double pizza_price = 3.99d;
-    private double fries_price = 2.99d;
-    private double hashbites_price = 2.99d;
-    private double onionrings_price = 2.99d;
-    private double soda_price = 1.99d;
-    private double water_price = 1.59d;
-    private double juice_price = 2.50d;
     
-    //declaring product string names and making it private objects
-    private String nachos = "Loaded Nachos";
-    private String burger = "Beast Burger";
-    private String pizza = "Pizza Slice";
-    private String fries = "NZ Fries";
-    private String hashbites = "Hash Bites";
-    
-    
+    int quantity;   //invoice value when button clicked.
+
     public Menu_and_Cart() 
     {
         initComponents();
-
-        
     }
-    
+
     private void clear()
     {
         int warningPopUp = JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel your order?");
         if(warningPopUp == JOptionPane.YES_OPTION)
         {
-            
+            cartPanel.setText("No orders added.");
         }   
         else if (warningPopUp == JOptionPane.NO_OPTION)
         {
-            
+            if(cartPanel.getText() == null || cartPanel.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(this, "Unable to cancel as the cart is empty.");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Continuing order...");
+            }
         }  
-    }
-
-    private void addValuetoButtonPressed()
-    {
-
     }
     
     /**
@@ -74,28 +61,29 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        Header_Panel = new javax.swing.JPanel();
+        inc_READY_ble = new javax.swing.JLabel();
+        Body_Panel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        total = new javax.swing.JLabel();
+        cartPane = new javax.swing.JScrollPane();
+        cartPanel = new javax.swing.JLabel();
+        Category_foods = new javax.swing.JLabel();
+        Category_sides = new javax.swing.JLabel();
+        Category_drinks = new javax.swing.JLabel();
+        print_invoice = new javax.swing.JButton();
+        nachos_title = new javax.swing.JLabel();
+        nachos_price = new javax.swing.JLabel();
+        nachos_button = new javax.swing.JButton();
+        burger_title = new javax.swing.JLabel();
+        burger_price = new javax.swing.JLabel();
+        burger_button = new javax.swing.JButton();
+        pizza_price = new javax.swing.JLabel();
+        pizza_title = new javax.swing.JLabel();
+        pizza_button = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
@@ -116,9 +104,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         cancelOrder_button = new javax.swing.JButton();
         voidItem_button = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordering System - inc-READY-ble!");
@@ -126,18 +111,18 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         setForeground(java.awt.Color.darkGray);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(199, 0, 57));
-        jPanel1.setLayout(null);
+        Header_Panel.setBackground(new java.awt.Color(199, 0, 57));
+        Header_Panel.setLayout(null);
 
-        jLabel4.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("inc-READY-ble!");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(0, 2, 830, 44);
+        inc_READY_ble.setFont(new java.awt.Font("Agency FB", 1, 55)); // NOI18N
+        inc_READY_ble.setForeground(new java.awt.Color(242, 242, 242));
+        inc_READY_ble.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inc_READY_ble.setText("inc-READY-ble!");
+        Header_Panel.add(inc_READY_ble);
+        inc_READY_ble.setBounds(0, 2, 830, 70);
 
-        jPanel3.setBackground(new java.awt.Color(20, 30, 70));
-        jPanel3.setLayout(null);
+        Body_Panel.setBackground(new java.awt.Color(20, 30, 70));
+        Body_Panel.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(255, 245, 224));
 
@@ -150,161 +135,174 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Click on an item to add to your order.");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        total.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        total.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        cartPanel.setText("No orders added.");
+        cartPanel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        cartPane.setViewportView(cartPanel);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cartPane, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(cartPane, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(total)
                 .addContainerGap())
         );
 
-        jPanel3.add(jPanel2);
+        Body_Panel.add(jPanel2);
         jPanel2.setBounds(10, 20, 240, 290);
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel14.setText("FOODS");
-        jPanel3.add(jLabel14);
-        jLabel14.setBounds(260, 10, 70, 25);
+        Category_foods.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Category_foods.setForeground(new java.awt.Color(255, 105, 105));
+        Category_foods.setText("FOODS");
+        Body_Panel.add(Category_foods);
+        Category_foods.setBounds(260, 10, 70, 25);
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel29.setText("SIDES");
-        jPanel3.add(jLabel29);
-        jLabel29.setBounds(260, 150, 50, 25);
+        Category_sides.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Category_sides.setForeground(new java.awt.Color(255, 105, 105));
+        Category_sides.setText("SIDES");
+        Body_Panel.add(Category_sides);
+        Category_sides.setBounds(260, 150, 50, 25);
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel13.setText("DRINKS");
-        jPanel3.add(jLabel13);
-        jLabel13.setBounds(260, 290, 70, 20);
+        Category_drinks.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Category_drinks.setForeground(new java.awt.Color(255, 105, 105));
+        Category_drinks.setText("DRINKS");
+        Body_Panel.add(Category_drinks);
+        Category_drinks.setBounds(260, 290, 70, 20);
 
-        jButton1.setBackground(new java.awt.Color(199, 0, 57));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(242, 242, 242));
-        jButton1.setText("PRINT INVOICE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        print_invoice.setBackground(new java.awt.Color(199, 0, 57));
+        print_invoice.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        print_invoice.setForeground(new java.awt.Color(242, 242, 242));
+        print_invoice.setText("PRINT INVOICE");
+        print_invoice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                print_invoiceActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1);
-        jButton1.setBounds(10, 370, 230, 40);
+        Body_Panel.add(print_invoice);
+        print_invoice.setBounds(10, 370, 230, 40);
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setLabelFor(jButton2);
-        jLabel22.setText("$3.49");
-        jLabel22.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel3.add(jLabel22);
-        jLabel22.setBounds(340, 95, 100, 20);
+        nachos_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nachos_title.setForeground(new java.awt.Color(255, 105, 105));
+        nachos_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nachos_title.setLabelFor(nachos_button);
+        nachos_title.setText("<html><CENTER>Loaded<br />Nachos</CENTER></html>");
+        Body_Panel.add(nachos_title);
+        nachos_title.setBounds(350, 60, 80, 30);
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setLabelFor(jButton2);
-        jLabel21.setText("<html><CENTER>Loaded<br />Nachos</CENTER></html>");
-        jPanel3.add(jLabel21);
-        jLabel21.setBounds(350, 60, 80, 30);
+        nachos_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        nachos_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nachos_price.setLabelFor(nachos_button);
+        nachos_price.setText("$3.49");
+        nachos_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Body_Panel.add(nachos_price);
+        nachos_price.setBounds(340, 95, 100, 20);
 
-        jButton2.setBackground(new java.awt.Color(255, 245, 224));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Loaded Nachos-.png"))); // NOI18N
-        jButton2.setAlignmentY(0.0F);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setIconTextGap(10);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        nachos_button.setBackground(new java.awt.Color(255, 245, 224));
+        nachos_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/Loaded Nachos-.png"))); // NOI18N
+        nachos_button.setAlignmentY(0.0F);
+        nachos_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nachos_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nachos_button.setIconTextGap(10);
+        nachos_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                nachos_buttonActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2);
-        jButton2.setBounds(260, 40, 180, 89);
+        Body_Panel.add(nachos_button);
+        nachos_button.setBounds(260, 40, 180, 89);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setLabelFor(jButton3);
-        jLabel3.setText("<html><CENTER>Beast<br/>Burger</CENTER></html>");
-        jLabel3.setAlignmentY(0.0F);
-        jPanel3.add(jLabel3);
-        jLabel3.setBounds(540, 60, 80, 30);
+        burger_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        burger_title.setForeground(new java.awt.Color(255, 105, 105));
+        burger_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        burger_title.setLabelFor(burger_button);
+        burger_title.setText("<html><CENTER>Beast<br/>Burger</CENTER></html>");
+        burger_title.setAlignmentY(0.0F);
+        Body_Panel.add(burger_title);
+        burger_title.setBounds(540, 60, 80, 30);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("$7.99");
-        jPanel3.add(jLabel6);
-        jLabel6.setBounds(540, 90, 80, 30);
+        burger_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        burger_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        burger_price.setText("$7.99");
+        Body_Panel.add(burger_price);
+        burger_price.setBounds(540, 90, 80, 30);
 
-        jButton3.setBackground(new java.awt.Color(255, 245, 224));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/burger-.png"))); // NOI18N
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setIconTextGap(10);
-        jPanel3.add(jButton3);
-        jButton3.setBounds(450, 40, 180, 90);
+        burger_button.setBackground(new java.awt.Color(255, 245, 224));
+        burger_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/burger-.png"))); // NOI18N
+        burger_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        burger_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        burger_button.setIconTextGap(10);
+        burger_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                burger_buttonActionPerformed(evt);
+            }
+        });
+        Body_Panel.add(burger_button);
+        burger_button.setBounds(450, 40, 180, 90);
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("$3.99");
-        jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel3.add(jLabel24);
-        jLabel24.setBounds(730, 90, 90, 15);
+        pizza_price.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        pizza_price.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pizza_price.setText("$3.99");
+        pizza_price.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Body_Panel.add(pizza_price);
+        pizza_price.setBounds(730, 90, 90, 15);
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 105, 105));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("Pizza Slice");
-        jLabel23.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel3.add(jLabel23);
-        jLabel23.setBounds(740, 70, 70, 16);
+        pizza_title.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        pizza_title.setForeground(new java.awt.Color(255, 105, 105));
+        pizza_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pizza_title.setText("Pizza Slice");
+        pizza_title.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Body_Panel.add(pizza_title);
+        pizza_title.setBounds(740, 70, 70, 16);
 
-        jButton4.setBackground(new java.awt.Color(255, 245, 224));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/mixed pizza-.png"))); // NOI18N
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setIconTextGap(10);
-        jPanel3.add(jButton4);
-        jButton4.setBounds(640, 40, 180, 90);
+        pizza_button.setBackground(new java.awt.Color(255, 245, 224));
+        pizza_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project2_GUI/Images/mixed pizza-.png"))); // NOI18N
+        pizza_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pizza_button.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pizza_button.setIconTextGap(10);
+        Body_Panel.add(pizza_button);
+        pizza_button.setBounds(640, 40, 180, 90);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 105, 105));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("NZ Fries");
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel3.add(jLabel8);
+        Body_Panel.add(jLabel8);
         jLabel8.setBounds(350, 210, 80, 16);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("$2.99");
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel3.add(jLabel9);
+        Body_Panel.add(jLabel9);
         jLabel9.setBounds(340, 230, 100, 15);
 
         jButton5.setBackground(new java.awt.Color(255, 245, 224));
@@ -312,7 +310,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton5.setIconTextGap(10);
-        jPanel3.add(jButton5);
+        Body_Panel.add(jButton5);
         jButton5.setBounds(260, 180, 180, 90);
 
         jLabel25.setBackground(new java.awt.Color(255, 255, 255));
@@ -321,14 +319,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setText("Hash Bites");
         jLabel25.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel3.add(jLabel25);
+        Body_Panel.add(jLabel25);
         jLabel25.setBounds(550, 210, 70, 16);
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("$2.99");
         jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel3.add(jLabel26);
+        Body_Panel.add(jLabel26);
         jLabel26.setBounds(530, 230, 100, 15);
 
         jButton6.setBackground(new java.awt.Color(255, 245, 224));
@@ -336,7 +334,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton6.setIconTextGap(10);
-        jPanel3.add(jButton6);
+        Body_Panel.add(jButton6);
         jButton6.setBounds(450, 180, 180, 90);
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -344,14 +342,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("<HTML><CENTER>Fried<BR />BO-rings</CENTER></HTML>");
         jLabel27.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel3.add(jLabel27);
+        Body_Panel.add(jLabel27);
         jLabel27.setBounds(730, 200, 80, 32);
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("$2.99");
         jLabel28.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel3.add(jLabel28);
+        Body_Panel.add(jLabel28);
         jLabel28.setBounds(720, 235, 100, 20);
 
         jButton7.setBackground(new java.awt.Color(255, 245, 224));
@@ -359,7 +357,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setIconTextGap(10);
-        jPanel3.add(jButton7);
+        Body_Panel.add(jButton7);
         jButton7.setBounds(640, 180, 180, 90);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -367,14 +365,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("<HTML><CENTER>Unlimited<BR />Soda</CENTER></HTML>");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel3.add(jLabel11);
+        Body_Panel.add(jLabel11);
         jLabel11.setBounds(350, 340, 80, 30);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("$1.99");
         jLabel12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel3.add(jLabel12);
+        Body_Panel.add(jLabel12);
         jLabel12.setBounds(350, 375, 80, 20);
 
         jButton8.setBackground(new java.awt.Color(255, 245, 224));
@@ -382,7 +380,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton8.setIconTextGap(10);
-        jPanel3.add(jButton8);
+        Body_Panel.add(jButton8);
         jButton8.setBounds(260, 320, 180, 90);
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -390,14 +388,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel30.setText("<HTML><CENTER>Bottled<BR /> Water</CENTER></HTML> ");
         jLabel30.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel3.add(jLabel30);
+        Body_Panel.add(jLabel30);
         jLabel30.setBounds(540, 340, 80, 30);
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel31.setText("$1.59");
         jLabel31.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel3.add(jLabel31);
+        Body_Panel.add(jLabel31);
         jLabel31.setBounds(540, 375, 80, 20);
 
         jButton9.setBackground(new java.awt.Color(255, 245, 224));
@@ -405,7 +403,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton9.setIconTextGap(10);
-        jPanel3.add(jButton9);
+        Body_Panel.add(jButton9);
         jButton9.setBounds(450, 320, 180, 90);
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -413,14 +411,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("Fruit Juices");
         jLabel32.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel3.add(jLabel32);
+        Body_Panel.add(jLabel32);
         jLabel32.setBounds(740, 350, 70, 16);
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("$2.50");
         jLabel33.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel3.add(jLabel33);
+        Body_Panel.add(jLabel33);
         jLabel33.setBounds(730, 370, 80, 15);
 
         jButton10.setBackground(new java.awt.Color(255, 245, 224));
@@ -429,7 +427,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton10.setIconTextGap(10);
         jButton10.setName(""); // NOI18N
-        jPanel3.add(jButton10);
+        Body_Panel.add(jButton10);
         jButton10.setBounds(640, 320, 180, 90);
 
         cancelOrder_button.setBackground(new java.awt.Color(199, 0, 57));
@@ -441,7 +439,7 @@ public class Menu_and_Cart extends javax.swing.JFrame {
                 cancelOrder_buttonActionPerformed(evt);
             }
         });
-        jPanel3.add(cancelOrder_button);
+        Body_Panel.add(cancelOrder_button);
         cancelOrder_button.setBounds(130, 320, 110, 40);
 
         voidItem_button.setBackground(new java.awt.Color(199, 0, 57));
@@ -453,43 +451,39 @@ public class Menu_and_Cart extends javax.swing.JFrame {
                 voidItem_buttonActionPerformed(evt);
             }
         });
-        jPanel3.add(voidItem_button);
+        Body_Panel.add(voidItem_button);
         voidItem_button.setBounds(10, 320, 110, 40);
-
-        jMenu1.setText("HOME");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("EXIT");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Header_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+            .addComponent(Body_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Header_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                .addComponent(Body_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void print_invoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_invoiceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_print_invoiceActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void nachos_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nachos_buttonActionPerformed
+    
+    quantity++;
+    //String currentText = cartPanel.getText();
+    String nacho_details = "\nLoaded Nachos \t $" + food_tax + "\t x";
+    cartPanel.setText(nacho_details + quantity);
+    }//GEN-LAST:event_nachos_buttonActionPerformed
 
     private void cancelOrder_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrder_buttonActionPerformed
     clear();
@@ -497,8 +491,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelOrder_buttonActionPerformed
 
     private void voidItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidItem_buttonActionPerformed
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_voidItem_buttonActionPerformed
+
+    private void burger_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_burger_buttonActionPerformed
+    quantity++;
+    String currentText = cartPanel.getText();
+    cartPanel.setText("\nBeast Burger $" + food_tax + "\tx" + quantity);        // TODO add your handling code here:
+    }//GEN-LAST:event_burger_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -540,12 +540,19 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Body_Panel;
+    private javax.swing.JLabel Category_drinks;
+    private javax.swing.JLabel Category_foods;
+    private javax.swing.JLabel Category_sides;
+    private javax.swing.JPanel Header_Panel;
+    private javax.swing.JButton burger_button;
+    private javax.swing.JLabel burger_price;
+    private javax.swing.JLabel burger_title;
     private javax.swing.JButton cancelOrder_button;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane cartPane;
+    private javax.swing.JLabel cartPanel;
+    private javax.swing.JLabel inc_READY_ble;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -554,36 +561,27 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton nachos_button;
+    private javax.swing.JLabel nachos_price;
+    private javax.swing.JLabel nachos_title;
+    private javax.swing.JButton pizza_button;
+    private javax.swing.JLabel pizza_price;
+    private javax.swing.JLabel pizza_title;
+    private javax.swing.JButton print_invoice;
+    private javax.swing.JLabel total;
     private javax.swing.JButton voidItem_button;
     // End of variables declaration//GEN-END:variables
 }
