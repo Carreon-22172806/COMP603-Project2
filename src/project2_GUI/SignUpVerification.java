@@ -90,12 +90,16 @@ public class SignUpVerification extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 105, 105));
 
         first_textfield.setText("\n");
+        first_textfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         second_textfield.setText("\n");
+        second_textfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         third_textfield.setText("\n");
+        third_textfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         fourth_textfield.setText("\n");
+        fourth_textfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fourth_textfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fourth_textfieldActionPerformed(evt);
@@ -106,6 +110,7 @@ public class SignUpVerification extends javax.swing.JFrame {
         ProceedButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ProceedButton.setForeground(new java.awt.Color(242, 242, 242));
         ProceedButton.setText("Proceed");
+        ProceedButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ProceedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ProceedButtonActionPerformed(evt);
@@ -175,25 +180,25 @@ public class SignUpVerification extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(24, 24, 24)
                 .addGroup(SubBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(first_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                .addGap(24, 24, 24)
                 .addGroup(SubBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(second_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                .addGap(24, 24, 24)
                 .addGroup(SubBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(third_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                .addGap(24, 24, 24)
                 .addGroup(SubBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fourth_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                .addGap(24, 24, 24)
                 .addComponent(ProceedButton)
-                .addGap(10, 10, 10))
+                .addGap(24, 24, 24))
         );
 
         BodyPanel.add(SubBodyPanel);

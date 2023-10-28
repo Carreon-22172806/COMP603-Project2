@@ -1,9 +1,0 @@
-		inc-READY-ble!
-		= = = = inc-READY-ble! AUT = = = =		
-	<<< Software Made By: Camille Joyce Carreon>>>	
-	 KIA ORA, OUR DEAREST CUSTOMER 	
-		WE OFFER YOU THE BEST QUALITY AND PRICE FOR YOUR MEALS		
-	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =	
-		ITEM		PRICE		QUANTITY
-
-Beast Burger	$0.13 x 1

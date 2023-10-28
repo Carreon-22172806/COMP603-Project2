@@ -56,8 +56,6 @@ public class Login extends javax.swing.JFrame {
         PasswordField = new javax.swing.JPasswordField();
         ID = new javax.swing.JTextField();
         LoginButton1 = new javax.swing.JButton();
-        FooterPanel = new javax.swing.JPanel();
-        AdminLogin = new javax.swing.JButton();
         FooterPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         SignupButton = new javax.swing.JButton();
@@ -92,6 +90,7 @@ public class Login extends javax.swing.JFrame {
         LoginButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LoginButton.setForeground(new java.awt.Color(242, 242, 242));
         LoginButton.setText("Log in");
+        LoginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginButtonActionPerformed(evt);
@@ -106,6 +105,7 @@ public class Login extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
+        PasswordField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         PasswordField.setMinimumSize(new java.awt.Dimension(35, 20));
         PasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +113,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        ID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDActionPerformed(evt);
@@ -123,6 +124,7 @@ public class Login extends javax.swing.JFrame {
         LoginButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LoginButton1.setForeground(new java.awt.Color(242, 242, 242));
         LoginButton1.setText("Reset Password");
+        LoginButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         LoginButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginButton1ActionPerformed(evt);
@@ -182,38 +184,6 @@ public class Login extends javax.swing.JFrame {
         BodyPanel.add(SubBodyPanel);
         SubBodyPanel.setBounds(120, 40, 590, 230);
 
-        FooterPanel.setBackground(new java.awt.Color(255, 245, 224));
-
-        AdminLogin.setBackground(new java.awt.Color(20, 30, 70));
-        AdminLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        AdminLogin.setForeground(new java.awt.Color(242, 242, 242));
-        AdminLogin.setText("Administrator Login");
-        AdminLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdminLoginActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout FooterPanelLayout = new javax.swing.GroupLayout(FooterPanel);
-        FooterPanel.setLayout(FooterPanelLayout);
-        FooterPanelLayout.setHorizontalGroup(
-            FooterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FooterPanelLayout.createSequentialGroup()
-                .addContainerGap(207, Short.MAX_VALUE)
-                .addComponent(AdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(207, 207, 207))
-        );
-        FooterPanelLayout.setVerticalGroup(
-            FooterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FooterPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        BodyPanel.add(FooterPanel);
-        FooterPanel.setBounds(120, 290, 590, 40);
-
         FooterPanel1.setBackground(new java.awt.Color(255, 245, 224));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -225,6 +195,7 @@ public class Login extends javax.swing.JFrame {
         SignupButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         SignupButton.setForeground(new java.awt.Color(242, 242, 242));
         SignupButton.setText("Account Sign Up");
+        SignupButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SignupButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignupButtonActionPerformed(evt);
@@ -236,24 +207,24 @@ public class Login extends javax.swing.JFrame {
         FooterPanel1Layout.setHorizontalGroup(
             FooterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FooterPanel1Layout.createSequentialGroup()
-                .addGap(121, 121, 121)
+                .addGap(120, 120, 120)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(106, 106, 106)
                 .addComponent(SignupButton)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         FooterPanel1Layout.setVerticalGroup(
             FooterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FooterPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addGroup(FooterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SignupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         BodyPanel.add(FooterPanel1);
-        FooterPanel1.setBounds(120, 340, 582, 40);
+        FooterPanel1.setBounds(120, 300, 590, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -291,7 +262,9 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Successfully logged in.");
                 Menu_and_Cart mac = new Menu_and_Cart();
                 mac.setVisible(true);
-                this.dispose(); 
+                this.dispose();
+                JOptionPane.showMessageDialog(mac, "Welcome to the ORDERING SYSTEM!");
+                
             }
             else
             {
@@ -305,10 +278,6 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
     
-    private void AdminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLoginActionPerformed
-
-    }//GEN-LAST:event_AdminLoginActionPerformed
-
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFieldActionPerformed
@@ -365,10 +334,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AdminLogin;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JLabel EmployeeID_label;
-    private javax.swing.JPanel FooterPanel;
     private javax.swing.JPanel FooterPanel1;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JTextField ID;

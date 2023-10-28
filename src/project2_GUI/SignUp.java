@@ -7,7 +7,9 @@ package project2_GUI;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -88,6 +90,7 @@ public class SignUp extends javax.swing.JFrame {
         FirstNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         FirstNameLabel.setText("First Name");
 
+        firstname_textfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         firstname_textfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 firstname_textfieldActionPerformed(evt);
@@ -97,6 +100,7 @@ public class SignUp extends javax.swing.JFrame {
         PasswordLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         PasswordLabel.setText("Password");
 
+        password_textfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         password_textfield.setMinimumSize(new java.awt.Dimension(35, 20));
         password_textfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,13 +111,18 @@ public class SignUp extends javax.swing.JFrame {
         LastNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         LastNameLabel.setText("Last Name");
 
+        lastname_textfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
         EmployeeIDLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         EmployeeIDLabel.setText("EmployeeID");
+
+        employeeid_textfield.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         ProceedButton.setBackground(new java.awt.Color(20, 30, 70));
         ProceedButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ProceedButton.setForeground(new java.awt.Color(242, 242, 242));
         ProceedButton.setText("Proceed");
+        ProceedButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ProceedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ProceedButtonActionPerformed(evt);
@@ -226,14 +235,34 @@ public class SignUp extends javax.swing.JFrame {
             else
             {
                 Connection database = DriverManager.getConnection("jdbc:derby://localhost:1527/Employee_Accounts", "proj2", "Edatabase603");
-                Statement script = database.createStatement();
-                script.execute("INSERT INTO EMPLOYEE_DETAILS VALUES('" + employeeID + "', '" + firstName 
+                PreparedStatement script = database.prepareStatement("SELECT * FROM EMPLOYEE_DETAILS "
+                                                            + "WHERE FIRST_NAME = ? AND LAST_NAME = ? AND EMPLOYEE_ID = ? AND PASSWORD = ?");
+                script.setString(1, firstname_textfield.getText());
+                script.setString(2, lastname_textfield.getText());
+                script.setString(3, employeeid_textfield.getText());
+                script.setString(4, String.valueOf(password_textfield.getPassword()));
+                ResultSet rs = script.executeQuery();
+                //If else statement to redirect to another Jframe and to inform user for invalid access due to wrong information
+                if(rs.next()) 
+                {
+                    JOptionPane.showMessageDialog(this, "This account has already existed.");
+                    firstname_textfield.setText("");
+                    lastname_textfield.setText("");
+                    employeeid_textfield.setText("");
+                    password_textfield.setText("");
+                }
+                else
+                    {
+                    Statement script2 = database.createStatement();
+                    script2.execute("INSERT INTO EMPLOYEE_DETAILS VALUES('" + employeeID + "', '" + firstName 
                                    + "', '" + lastName + "', '" + password + "', null, null, null, null)");
-                JOptionPane.showMessageDialog(this, "Account Registered. Welcome, " + firstName + " " + lastName + ".");
+                    JOptionPane.showMessageDialog(this, "Account Registered. Welcome, " + firstName + " " + lastName + ".");
                     //redirecting to another Jframe (SigUp Verification)
-                SignUpVerification verification = new SignUpVerification(employeeID);
-                verification.setVisible(true);
-                this.dispose();
+                    SignUpVerification verification = new SignUpVerification(employeeID);
+                    verification.setVisible(true);
+                    this.dispose();
+                    }
+                
             }
         } 
         catch (SQLException e) 
@@ -241,7 +270,7 @@ public class SignUp extends javax.swing.JFrame {
             Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, e);
         }
         
-        
+              
     }//GEN-LAST:event_ProceedButtonActionPerformed
 
     private void password_textfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_textfieldActionPerformed

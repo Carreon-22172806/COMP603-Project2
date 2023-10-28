@@ -208,6 +208,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="firstname_textfield">
+              <Properties>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Text Cursor"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstname_textfieldActionPerformed"/>
               </Events>
@@ -222,6 +227,9 @@
             </Component>
             <Component class="javax.swing.JPasswordField" name="password_textfield">
               <Properties>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Text Cursor"/>
+                </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[35, 20]"/>
                 </Property>
@@ -239,6 +247,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="lastname_textfield">
+              <Properties>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Text Cursor"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="EmployeeIDLabel">
               <Properties>
@@ -249,6 +262,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="employeeid_textfield">
+              <Properties>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Text Cursor"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="ProceedButton">
               <Properties>
@@ -262,6 +280,9 @@
                   <Color blue="f2" green="f2" red="f2" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Proceed"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProceedButtonActionPerformed"/>
