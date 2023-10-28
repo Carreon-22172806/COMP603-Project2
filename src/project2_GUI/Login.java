@@ -1,11 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package project2_GUI;
 
 import java.awt.Color;
-import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
-import javax.swing.JLabel;
 
 /**
  * 
@@ -26,13 +20,8 @@ import javax.swing.JLabel;
  * 
  */
 public class Login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Menu
-     */
     public Login() {
         initComponents();
-        
     }
 
     /**
@@ -55,7 +44,6 @@ public class Login extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         PasswordField = new javax.swing.JPasswordField();
         ID = new javax.swing.JTextField();
-        LoginButton1 = new javax.swing.JButton();
         FooterPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         SignupButton = new javax.swing.JButton();
@@ -120,17 +108,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        LoginButton1.setBackground(new java.awt.Color(20, 30, 70));
-        LoginButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        LoginButton1.setForeground(new java.awt.Color(242, 242, 242));
-        LoginButton1.setText("Reset Password");
-        LoginButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LoginButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout SubBodyPanelLayout = new javax.swing.GroupLayout(SubBodyPanel);
         SubBodyPanel.setLayout(SubBodyPanelLayout);
         SubBodyPanelLayout.setHorizontalGroup(
@@ -151,10 +128,9 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubBodyPanelLayout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
-                .addGroup(SubBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SubBodyPanelLayout.createSequentialGroup()
-                        .addComponent(LoginButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(SubBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SubBodyPanelLayout.createSequentialGroup()
+                        .addGap(192, 192, 192)
                         .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38))
@@ -174,11 +150,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(SubBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Password_label))
-                .addGap(27, 27, 27)
-                .addGroup(SubBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LoginButton)
-                    .addComponent(LoginButton1))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(LoginButton)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         BodyPanel.add(SubBodyPanel);
@@ -286,45 +260,13 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_IDActionPerformed
 
-    private void LoginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LoginButton1ActionPerformed
-
     private void SignupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignupButtonActionPerformed
     SignUp newaccount = new SignUp();
     newaccount.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_SignupButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
@@ -340,7 +282,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JTextField ID;
     private javax.swing.JButton LoginButton;
-    private javax.swing.JButton LoginButton1;
     private javax.swing.JLabel LoginHeader;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JLabel Password_label;

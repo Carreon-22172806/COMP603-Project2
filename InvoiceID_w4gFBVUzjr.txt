@@ -1,0 +1,28 @@
+                           inc-READY-ble!
+                 = = = = inc-READY-ble AUT = = = =
+          <<< Software Made By: Camille Joyce Carreon >>>
+                   KIA ORA, OUR DEAREST CUSTOMER 	
+        WE OFFER YOU THE BEST QUALITY AND PRICE FOR YOUR MEALS
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+                           29-10-2023          04:29:01                           
+                                 SELF-ORDER KIOSK                                 
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+      ITEM	PRICE	QUANTITY
+[Ljava.lang.String;@50305395
+
+
+	TOTAL ITEMS:		1
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+               * * * * *  CUSTOMER COPY  * * * * *                 
+
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+   WE ARE CURRENTLY WORKING ON WITH OUR COMPANY WEBSITE TO PROVIDE 
+    YOU ONLINE PICKUPS TO OUR FOOD SERVICES SO PLEASE STAY TUNED. 
+                THANK YOU FOR CHOOSING INC-READY-BLE!            
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+     WE APPRECIATE YOUR FEEDBACK TO HELP US IMPROVE OUR SERVICES 
+         FILL IN OUR SURVEY TO BE INCLUDED IN OUR PROMOTION: 
+                      WIN 1 OF 5 BRAND NEW CAR!             
+ = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+        <<< PLEASE KEEP THIS INVOICE AS PROOF OF PURCHASE >>>            
