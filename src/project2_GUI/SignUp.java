@@ -58,6 +58,7 @@ public class SignUp extends javax.swing.JFrame {
         EmployeeIDLabel = new javax.swing.JLabel();
         employeeid_textfield = new javax.swing.JTextField();
         ProceedButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordering System - inc-READY-ble!");
@@ -194,6 +195,18 @@ public class SignUp extends javax.swing.JFrame {
         BodyPanel.add(SubBodyPanel);
         SubBodyPanel.setBounds(120, 90, 590, 220);
 
+        jButton1.setBackground(new java.awt.Color(199, 0, 57));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 245, 224));
+        jButton1.setText("BACK TO LOGIN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        BodyPanel.add(jButton1);
+        jButton1.setBounds(625, 372, 170, 50);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -281,6 +294,12 @@ public class SignUp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_firstname_textfieldActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    Login login = new Login();
+        this.dispose();
+    login.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -332,6 +351,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JPanel SubBodyPanel;
     private javax.swing.JTextField employeeid_textfield;
     private javax.swing.JTextField firstname_textfield;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField lastname_textfield;

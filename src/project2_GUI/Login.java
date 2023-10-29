@@ -237,8 +237,7 @@ public class Login extends javax.swing.JFrame {
                 Menu_and_Cart mac = new Menu_and_Cart();
                 mac.setVisible(true);
                 this.dispose();
-                JOptionPane.showMessageDialog(mac, "Welcome to the ORDERING SYSTEM!");
-                
+                JOptionPane.showMessageDialog(mac, "Welcome to the ORDERING SYSTEM!");   
             }
             else
             {

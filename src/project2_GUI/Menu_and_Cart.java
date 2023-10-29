@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -29,16 +30,16 @@ import javax.swing.JOptionPane;
 public class Menu_and_Cart extends javax.swing.JFrame {
     
     //for calculations
-    private int [] quantity = new int [] {0,0,0,0,0,0,0,0,0};   //invoice value when button clicked.
-    private double food_tax = .13d;
+    private final int [] quantity = new int [] {0,0,0,0,0,0,0,0,0};   //invoice value when button clicked.
+    private final double food_tax = .13d;
     private double totalamount = 0.0d;
     private int sumOfArray = 0;
     
     //declaring map for menu and price
-    private Map<String, Double> orders = new HashMap<>();
+    private final Map<String, Double> orders = new HashMap<>();
     
     //This is to store map data into this array for total calculation later.
-    private ArrayList<String> addedItems = new ArrayList<>(); //use this code!
+    private final ArrayList<String> addedItems = new ArrayList<>(); //use this code!
     
     
     //================ RECEIPT FORMATTING ================//
@@ -78,11 +79,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     }
     //================ RECEIPT FORMATTING ================//
     
-    public Menu_and_Cart(Map<String, Double> orders, int [] quantity)
-    {
-        this.food_tax = 0.13d;
-        this.totalamount = totalamount;
-    }
     
     public Menu_and_Cart() 
     {
@@ -102,6 +98,8 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         New_Button.setEnabled(false);
         void_Panel.setVisible(true);
         disableSelections();
+        total_calculation.setText("Total Amount: \t$0.00");
+        gst_calculation.setText("GST included: \t$0.00");
     }
     
     private String writeInvoice()
@@ -272,10 +270,10 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         cart_label.setText("- - - Your virtual food cart - - -");
 
         gst_calculation.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        gst_calculation.setText("GST included:");
+        gst_calculation.setText("GST included:    $0.00");
 
         total_calculation.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        total_calculation.setText("Total Amount:");
+        total_calculation.setText("Total Amount:  $0.00");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -791,9 +789,14 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
     public void TotalOrder()
     {
+        double gst;
+        if(addedItems == null)
+        {
+            gst_calculation.setText("GST included: \t$" + food_tax);
+            total_calculation.setText("Total Amount: \t$0.00");
+        }
         for(String items : addedItems)
         {
             String[] splitToGetValue0 = items.split("\\$");
@@ -809,14 +812,21 @@ public class Menu_and_Cart extends javax.swing.JFrame {
                     double finalPRICE = Double.parseDouble(value1);
                     int finalQUANTITY = Integer.parseInt(value2);
                     
-                    totalamount += finalPRICE * finalQUANTITY;
-                    double gst = totalamount * food_tax;
-                    gst_calculation.setText("GST included: \t" + gst);
-                    total_calculation.setText("Total Amount:\t" + totalamount);
+                    double oneLineTotal =  finalPRICE * finalQUANTITY;
+                    totalamount += oneLineTotal;
                 }
             }
+                gst = totalamount * food_tax;
+                DecimalFormat totalDF = new DecimalFormat("#.##");
+                totalDF.setMinimumFractionDigits(2);                    
+                String formattedTotal = totalDF.format(totalamount);
+                String formattedGST = totalDF.format(gst);
+                    
+                gst_calculation.setText("GST included: \t$" + formattedGST);
+                total_calculation.setText("Total Amount: \t$" + formattedTotal);
         }
     }
+
     
     private void print_invoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print_invoiceActionPerformed
     if(cartPanel.getText().isEmpty())
@@ -829,8 +839,11 @@ public class Menu_and_Cart extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Printing Invoice...");
         Invoice.setText(receiptFormat());
         cartPanel.setText(null);
+        TotalOrder();
         New_Button.setEnabled(true);
         void_Panel.setVisible(false);
+        addedItems.clear();
+        TotalOrder();
     }
     }//GEN-LAST:event_print_invoiceActionPerformed
     
@@ -893,17 +906,33 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private void nachos_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nachos_buttonActionPerformed
         Set<Map.Entry<String, Double>> mapEntrySet = orders.entrySet();
             double nachosPrice = orders.get("Loaded Nachos");
-            quantity[0]++;           
-            if(cartPanel.getText() != null)
+            quantity[0]++;  
+            String nachos_text = "Loaded Nachos     $" + nachosPrice + "     x     " + quantity[0];
+            if(cartPanel.getText().isEmpty())
             {
-                cartPanel.append("Loaded Nachos     $" + nachosPrice + "     x   " + quantity[0]);
+                cartPanel.append(nachos_text);
+                addedItems.add(cartPanel.getText());
+                //Invoice.setText("This" + addedItems);
+            }
+            if(!cartPanel.getText().contains("Loaded Nachos"))
+            {
+                
             }
             else
             {
-                JOptionPane.showMessageDialog(this, "This has current text");
-                String currentText = cartPanel.getText();
-                cartPanel.setText(currentText + "\nLoaded Nachos     $" + nachosPrice + "     x   " + quantity[0]);
+                int qtyValue = quantity[0];
+                cartPanel.append("Loaded Nachos     $" + nachosPrice + "     x     " + qtyValue);
+                addedItems.add(cartPanel.getText());
+                //Invoice.setText("That" + addedItems);
+                cartPanel.setText("");
+                if(cartPanel.getText().startsWith("Loaded"))
+                {
+                    addedItems.removeIf(item -> item.startsWith("Loaded Nachos"));
+                }
+                cartPanel.append("Loaded Nachos     $" + nachosPrice + "     x     " + qtyValue);
+                addedItems.add(cartPanel.getText());
             }
+        TotalOrder();
     }//GEN-LAST:event_nachos_buttonActionPerformed
     
     private void voidItem_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidItem_buttonActionPerformed
@@ -960,10 +989,160 @@ public class Menu_and_Cart extends javax.swing.JFrame {
                                          cartPanel.getText().replace("Loaded Nachos", null);
                                     }
                                 }
-                                
-                               
-
+                            if(obj == burger_void)
+                            {
+                                if(quantity[1] > 0)
+                                {
+                                    double burgerPrice = orders.get("Beast Burger");
+                                    String container = cartPanel.getText();
+                                    quantity[1] = 0;
+                                    addedItems.add(container);
+                                    cartPanel.setText("Beast Burger     $" + burgerPrice + "     x     " + quantity[1]);
+                                    for (String item : addedItems)
+                                    {
+                                        Invoice.append(item + "\n");
+                                    }
+                                    
+                                    if(quantity[1] == 0)
+                                    {
+                                         cartPanel.getText().replace("Beast Burger", null);
+                                    }
+                                }
                             }
+                            if(obj == pizza_void)
+                            {
+                                if(quantity[2] > 0)
+                                {
+                                    double pizzaPrice = orders.get("Pizza Slice");
+                                    String container = cartPanel.getText();
+                                    quantity[2] = 0;
+                                    addedItems.add(container);
+                                    cartPanel.setText("Pizza Slice     $" + pizzaPrice + "     x     " + quantity[2]);
+                                    for (String item : addedItems)
+                                    {
+                                        Invoice.append(item + "\n");
+                                    }
+                                    if(quantity[2] == 0)
+                                    {
+                                         cartPanel.getText().replace("Pizza Slice", null);
+                                    }
+                                }
+                            }
+                            if(obj == fries_void)
+                            {
+                                if(quantity[3] > 0)
+                                {
+                                    double friesPrice = orders.get("NZ Fries");
+                                    String container = cartPanel.getText();
+                                    quantity[3] = 0;
+                                    addedItems.add(container);
+                                    cartPanel.setText("NZ Fries     $" + friesPrice + "     x     " + quantity[3]);
+                                    for (String item : addedItems)
+                                    {
+                                        Invoice.append(item + "\n");
+                                    }
+                                    if(quantity[3] == 0)
+                                    {
+                                         cartPanel.getText().replace("NZ Fries", null);
+                                    }
+                                }
+                            }
+                            if(obj == hashbites_void)
+                            {
+                                if(quantity[4] > 0)
+                                {
+                                    double hashbitesPrice = orders.get("Hash Bites");
+                                    String container = cartPanel.getText();
+                                    quantity[4] = 0;
+                                    addedItems.add(container);
+                                    cartPanel.setText("Hash Bites     $" + hashbitesPrice + "     x     " + quantity[4]);
+                                    for (String item : addedItems)
+                                    {
+                                        Invoice.append(item + "\n");
+                                    }
+                                    if(quantity[4] == 0)
+                                    {
+                                         cartPanel.getText().replace("Hash Bites", null);
+                                    }
+                                }
+                            }
+                            if(obj == onionrings_void)
+                            {
+                                if(quantity[5] > 0)
+                                {
+                                    double hashbitesPrice = orders.get("Fried BO-rings");
+                                    String container = cartPanel.getText();
+                                    quantity[5] = 0;
+                                    addedItems.add(container);
+                                    cartPanel.setText("Fried BO-rings     $" + hashbitesPrice + "     x     " + quantity[5]);
+                                    for (String item : addedItems)
+                                    {
+                                        Invoice.append(item + "\n");
+                                    }
+                                    if(quantity[5] == 0)
+                                    {
+                                         cartPanel.getText().replace("Fried BO-rings", null);
+                                    }
+                                }
+                            }
+                            if(obj == soda_void)
+                            {
+                                if(quantity[6] > 0)
+                                {
+                                    double sodaPrice = orders.get("Unlimited Soda");
+                                    String container = cartPanel.getText();
+                                    quantity[6] = 0;
+                                    addedItems.add(container);
+                                    cartPanel.setText("Unlimited Soda     $" + sodaPrice + "     x     " + quantity[6]);
+                                    for (String item : addedItems)
+                                    {
+                                        Invoice.append(item + "\n");
+                                    }
+                                    if(quantity[6] == 0)
+                                    {
+                                         cartPanel.getText().replace("Unlimited Soda", null);
+                                    }
+                                }
+                            }
+                            if(obj == water_void)
+                            {
+                                if(quantity[7] > 0)
+                                {
+                                    double waterPrice = orders.get("Bottled Water");
+                                    String container = cartPanel.getText();
+                                    quantity[7] = 0;
+                                    addedItems.add(container);
+                                    cartPanel.setText("Bottled Water     $" + waterPrice + "     x     " + quantity[7]);
+                                    for (String item : addedItems)
+                                    {
+                                        Invoice.append(item + "\n");
+                                    }
+                                    if(quantity[7] == 0)
+                                    {
+                                         cartPanel.getText().replace("Bottled Water", null);
+                                    }
+                                }
+                            }
+                            if(obj == juice_void)
+                            {
+                                if(quantity[8] > 0)
+                                {
+                                    double juicePrice = orders.get("Fruit Juices");
+                                    String container = cartPanel.getText();
+                                    quantity[8] = 0;
+                                    addedItems.add(container);
+                                    cartPanel.setText("Fruit Juices     $" + juicePrice + "     x     " + quantity[8]);
+                                    for (String item : addedItems)
+                                    {
+                                        Invoice.append(item + "\n");
+                                    }
+                                    if(quantity[8] == 0)
+                                    {
+                                         cartPanel.getText().replace("Fruit Juices", null);
+                                    }
+                                }
+                            }
+                        }
                             break;
                         case 2: //VOID QUANTITY option : just subtracting quantity value
                             JOptionPane.showMessageDialog(void_Panel, "VOID QUANTITY?");
@@ -971,250 +1150,6 @@ public class Menu_and_Cart extends javax.swing.JFrame {
                         case 3: //CANCEL option : Continues to the order without voiding any products.
                             JOptionPane.showMessageDialog(void_Panel, "Continuing order...");
                             break;
-                    }
-                    
-                    
-                    if(obj == nachos_void)
-                    {
-                        int voidOptions2 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
-                        switch (voidOptions2) {
-                            case JOptionPane.CANCEL_OPTION: // Object [] options = "CANCEL"
-                                JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
-                                break;
-                            case JOptionPane.YES_OPTION: // Object [] options = "ALL"
-                                quantity[0] = 0;
-                                cartPanel.setText("");
-                                break;
-                            case JOptionPane.NO_OPTION: // Object [] options = "ONLY ONE"
-                                if(quantity[0] > 0)
-                                {
-                                    quantity[0] --;
-                                    double nachosPrice = orders.get("Loaded Nachos");
-                                    cartPanel.setText("Loaded Nachos\t$" + nachosPrice + "\tx " + quantity[0]);
-                                    if(quantity [0]==0)
-                                    {
-                                        cartPanel.setText("");
-                                    }
-                                }
-                            default:
-                                break;
-                        }
-                    if(obj == burger_void)
-                    {
-                        int voidOptions1 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
-                            switch (voidOptions1) {
-                                case JOptionPane.CANCEL_OPTION:
-                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
-                                    break;
-                                case JOptionPane.YES_OPTION:
-                                    quantity[1] = 0;
-                                    cartPanel.setText("");
-                                    break;
-                                case JOptionPane.NO_OPTION:
-                                    if(quantity[1] > 0)
-                                    {
-                                        quantity[1] --;
-                                        double burgerPrice = orders.get("Beast Burger");
-                                        cartPanel.setText("Beast Burger\t$" + burgerPrice + "\tx " + quantity[1]);
-                                    }
-                                    else
-                                    {
-                                        quantity[1] = 0;
-                                        cartPanel.setText("");
-                                    }       break;
-                                default:
-                                    break;
-                            }
-                    }
-                    if(obj == pizza_void)
-                    {
-                        int voidOptions3 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
-                            switch (voidOptions3) {
-                                case JOptionPane.CANCEL_OPTION:
-                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
-                                    break;
-                                case JOptionPane.YES_OPTION:
-                                    quantity[2] = 0;
-                                    cartPanel.setText("");
-                                    break;
-                                case JOptionPane.NO_OPTION:
-                                    if(quantity[2] > 0)
-                                    {
-                                        quantity[2] --;
-                                        double pizzaPrice = orders.get("Pizza Slice");
-                                        cartPanel.setText("Pizza Slice\t$" + pizzaPrice + "\tx " + quantity[2]);
-                                    }
-                                    else
-                                    {
-                                        quantity[2] = 0;
-                                        cartPanel.setText("");
-                                    }       break;
-                                default:
-                                    break;
-                            }
-                    } 
-                    if(obj == fries_void)
-                    {
-                        int voidOptions4 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
-                            switch (voidOptions4) {
-                                case JOptionPane.CANCEL_OPTION:
-                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
-                                    break;
-                                case JOptionPane.YES_OPTION:
-                                    quantity[3] = 0;
-                                    cartPanel.setText("");
-                                    break;
-                                case JOptionPane.NO_OPTION:
-                                    if(quantity[3] > 0)
-                                    {
-                                        quantity[3] --;
-                                        double friesPrice = orders.get("NZ Fries");
-                                        cartPanel.setText("NZ Fries\t$" + friesPrice + "\tx " + quantity[3]);
-                                    }
-                                    else
-                                    {
-                                        quantity[3] = 0;
-                                        cartPanel.setText("");
-                                    }       break;
-                                default:
-                                    break;
-                            }
-                    }
-                    if(obj == hashbites_void)
-                    {
-                        int voidOptions5 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
-                            switch (voidOptions5) {
-                                case JOptionPane.CANCEL_OPTION:
-                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
-                                    break;
-                                case JOptionPane.YES_OPTION:
-                                    quantity[4] = 0;
-                                    cartPanel.setText("");
-                                    break;
-                                case JOptionPane.NO_OPTION:
-                                    if(quantity[4] > 0)
-                                    {
-                                        quantity[4] --;
-                                        double hashbitesPrice = orders.get("Hash Bites");
-                                        cartPanel.setText("Hash Bites\t$" + hashbitesPrice + "\tx " + quantity[4]);
-                                    }
-                                    else
-                                    {
-                                        quantity[4] = 0;
-                                        cartPanel.setText("");
-                                    }       break;
-                                default:
-                                    break;
-                            }
-                    }
-                    if(obj == onionrings_void)
-                    {
-                        int voidOptions6 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
-                            switch (voidOptions6) {
-                                case JOptionPane.CANCEL_OPTION:
-                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
-                                    break;
-                                case JOptionPane.YES_OPTION:
-                                    quantity[5] = 0;
-                                    cartPanel.setText("");
-                                    break;
-                                case JOptionPane.NO_OPTION:
-                                    if(quantity[5] > 0)
-                                    {
-                                        quantity[5] --;
-                                        double onionringsPrice = orders.get("Fried BO-rings");
-                                        cartPanel.setText("Fried BO-rings\t$" + onionringsPrice + "\tx " + quantity[5]);
-                                    }
-                                    else
-                                    {
-                                        quantity[5] = 0;
-                                        cartPanel.setText("");
-                                    }       break;
-                                default:
-                                    break;
-                            }
-                    }
-                    if(obj == soda_void)
-                    {
-                        int voidOptions7 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
-                            switch (voidOptions7) {
-                                case JOptionPane.CANCEL_OPTION:
-                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
-                                    break;
-                                case JOptionPane.YES_OPTION:
-                                    quantity[6] = 0;
-                                    cartPanel.setText("");
-                                    break;
-                                case JOptionPane.NO_OPTION:
-                                    if(quantity[6] > 0)
-                                    {
-                                        quantity[6] --;
-                                        double sodaPrice = orders.get("Unlimited Soda");
-                                        cartPanel.setText("Unlimited Soda\t$" + sodaPrice + "\tx " + quantity[6]);
-                                    }
-                                    else
-                                    {
-                                        quantity[6] = 0;
-                                        cartPanel.setText("");
-                                    }       break;
-                                default:
-                                    break;
-                            }
-                    }
-                    if(obj == water_void)
-                    {
-                        int voidOptions8 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
-                            switch (voidOptions8) {
-                                case JOptionPane.CANCEL_OPTION:
-                                    JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
-                                    break;
-                                case JOptionPane.YES_OPTION:
-                                    quantity[7] = 0;
-                                    cartPanel.setText("");
-                                    break;
-                                case JOptionPane.NO_OPTION:
-                                    if(quantity[7] > 0)
-                                    {
-                                        quantity[7] --;
-                                        double waterPrice = orders.get("Bottled Water");
-                                        cartPanel.setText("Bottled Water\t$" + waterPrice + "\tx " + quantity[7]);
-                                    }
-                                    else
-                                    {
-                                        quantity[7] = 0;
-                                        cartPanel.setText("");
-                                    }       break;
-                                default:
-                                    break;
-                            }
-                    }
-                    if(obj == juice_void)
-                    {
-                        int voidOptions9 = JOptionPane.showOptionDialog(cartPanel, "VOID PURCHASE?", "WARNING", JOptionPane.INFORMATION_MESSAGE, 0, null, options, null);
-                        if(voidOptions9 == JOptionPane.CANCEL_OPTION)
-                        {
-                            JOptionPane.showMessageDialog(cartPanel, "Continuing order...");
-                        }
-                        else if(voidOptions2 == JOptionPane.YES_OPTION)
-                        {
-                            quantity[8] = 0;
-                            cartPanel.setText("");
-                        }
-                        else if (voidOptions2 == JOptionPane.NO_OPTION)
-                        {
-                            if(quantity[8] > 0)
-                            {
-                                quantity[8] --;
-                                double friesPrice = orders.get("Fruit Juice");
-                                cartPanel.setText("Fruit Juice\t$" + friesPrice + "\tx " + quantity[8]);
-                            }
-                            else
-                            {
-                                quantity[8] = 0;
-                                cartPanel.setText("");
-                            }
-                        }
-                    }
                 }
             enableButtonAfterVoiding();
             disableSelections();
@@ -1235,9 +1170,29 @@ public class Menu_and_Cart extends javax.swing.JFrame {
     private void burger_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_burger_buttonActionPerformed
         Set<Map.Entry<String, Double>> mapEntrySet = orders.entrySet();
             double burgerPrice = orders.get("Beast Burger");
-            quantity[1]++;           
-            cartPanel.append("Beast Burger     $" + burgerPrice + "     x     " + quantity[1]);
-            
+            quantity[1]++;  
+            String nachos_text = "Beast Burger     $" + burgerPrice + "     x     " + quantity[1];
+            if(cartPanel.getText().isEmpty())
+            {
+                cartPanel.append(nachos_text);
+                addedItems.add(cartPanel.getText());
+                Invoice.setText("This" + addedItems);
+            }
+            else
+            {
+                int qtyValue = quantity[1];
+                cartPanel.append("Beast Burger     $" + burgerPrice + "     x     " + qtyValue);
+                addedItems.add(cartPanel.getText());
+                Invoice.setText("That" + addedItems);
+                cartPanel.setText("");
+                if(cartPanel.getText().startsWith("Loaded"))
+                {
+                    addedItems.removeIf(item -> item.startsWith("Beast Burger"));
+                }
+                cartPanel.append("Beast Burger     $" + burgerPrice + "     x     " + qtyValue);
+                addedItems.add(cartPanel.getText());
+            }
+        TotalOrder();    
     }//GEN-LAST:event_burger_buttonActionPerformed
 
     private void pizza_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pizza_buttonActionPerformed
